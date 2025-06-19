@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoData Systems</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e0f2f7; /* Light blue background as seen in PDF */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff; /* White background for the main container */
+            border-radius: 1rem; /* Rounded corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px; /* Adjust based on preferred layout width */
+            padding: 2.5rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* For absolute positioning of dialogs */
+        }
+        .page {
+            display: none; /* Hidden by default */
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page.active {
+            display: flex; /* Show active page */
+        }
+        .input-group {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4a5568; /* Darker text color */
+        }
+        .input-group input[type="text"],
+        .input-group input[type="password"],
+        .input-group input[type="date"],
+        .input-group input[type="time"],
+        .input-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e0; /* Light grey border */
+            border-radius: 0.5rem; /* Slightly rounded corners for inputs */
+            font-size: 1rem;
+            color: #2d3748; /* Dark text for inputs */
+            box-sizing: border-box;
+        }
+        .button-primary, .button-secondary, .button-danger {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem; /* More rounded buttons */
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .button-primary {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        .button-primary:hover {
+            background-color: #45a049;
+            transform: translateY(-1px);
+        }
+        .button-secondary {
+            background-color: #60a5fa; /* Blue */
+            color: white;
+        }
+        .button-secondary:hover {
+            background-color: #3b82f6;
+            transform: translateY(-1px);
+        }
+        .button-danger {
+            background-color: #ef4444; /* Red */
+            color: white;
+        }
+        .button-danger:hover {
+            background-color: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        /* Specific styles for the login page */
+        #login-page .logo-container {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        #login-page .logo-container img {
+            max-width: 150px; /* Adjust logo size */
+            margin-bottom: 1rem;
+        }
+        #login-page .form-container {
+            width: 100%;
+            max-width: 350px;
+            background-color: #f7fafc; /* Light grey background for login form */
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+        }
+        #login-page .button-group {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 350px;
+        }
+        #login-page .button-group button {
+            flex-grow: 1;
+            margin: 0 10px; /* Spacing between buttons */
+        }
+
+        /* Main menu styles */
+        #main-menu .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 600px;
+        }
+        #main-menu .menu-button {
+            background-color: #60a5fa; /* Blue for menu buttons */
+            color: white;
+            padding: 2rem 1rem;
+            border-radius: 1rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        #main-menu .menu-button:hover {
+            background-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        /* Form page general styles */
+        .form-page-header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        .form-content {
+            width: 100%;
+            max-width: 500px; /* Max width for forms */
+        }
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-actions.justify-center {
+            justify-content: center;
+        }
+
+        /* Confirmation dialog styles */
+        .dialog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+        }
+        .dialog-overlay.active {
+            display: flex;
+        }
+        .dialog-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+        .dialog-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #2d3748;
+        }
+        .dialog-actions {
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+        }
+        .dialog-actions button {
+            flex: 1;
+        }
+
+        /* Utility classes */
+        .text-center { text-align: center; }
+        .mb-8 { margin-bottom: 2rem; }
+        .text-3xl { font-size: 1.875rem; /* 30px */ }
+        .font-bold { font-weight: 700; }
+        /* User ID display */
+        #user-id-display {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            color: #333;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Header (Appears on most pages based on PDF) -->
+        <div class="absolute top-4 left-4">
+            <img src="https://placehold.co/100x40/60a5fa/ffffff?text=NeoData+Systems" alt="NeoData Systems Logo" class="w-24 h-auto rounded-lg">
+        </div>
+
+        <!-- User ID Display (for collaborative apps) -->
+        <div id="user-id-display" style="display: none;">
+            <span>Usuario ID: </span><span id="current-user-id"></span>
+        </div>
+
+        <!-- Login Page (Page 1) -->
+        <div id="login-page" class="page active">
+            <div class="logo-container">
+                <!-- Placeholder for Image 1 from PDF, assuming it's the NeoData Systems logo -->
+                <img src="https://placehold.co/150x150/e0f2f7/4a5568?text=NeoData+Systems" alt="NeoData Systems Logo" class="rounded-full">
+            </div>
+            <div class="form-container">
+                <h2 class="text-center text-2xl font-bold mb-6 text-gray-800">Iniciar Sesión</h2>
+                <div class="input-group">
+                    <label for="username">Ingresar Usuario</label>
+                    <input type="text" id="username" placeholder="Usuario">
+                </div>
+                <div class="input-group">
+                    <label for="password">Ingresar Contraseña</label>
+                    <input type="password" id="password" placeholder="Contraseña">
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="login-button" class="button-primary">Ingresar</button>
+                <button id="exit-button" class="button-danger">Salir</button>
+            </div>
+        </div>
+
+        <!-- Main Menu (Page 2) -->
+        <div id="main-menu" class="page">
+            <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Principal</h1>
+            <div class="menu-grid">
+                <button id="btn-alta" class="menu-button">ALTA</button>
+                <button id="btn-modificar" class="menu-button">MODIFICAR</button>
+                <button id="btn-consulta" class="menu-button">CONSULTA</button>
+                <button id="btn-baja" class="menu-button">BAJA</button>
+            </div>
+            <div class="form-actions justify-center mt-8">
+                <button id="main-menu-logout" class="button-danger">Cerrar Sesión</button>
+            </div>
+        </div>
+
+        <!-- Altas Menu (Page 3) -->
+        <div id="altas-menu" class="page">
+            <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Altas</h1>
+            <div class="menu-grid">
+                <button id="btn-alta-empresa" class="menu-button">Empresa</button>
+                <button id="btn-alta-empleado" class="menu-button">Empleado</button>
+                <button id="btn-alta-vendedor" class="menu-button">Vendedor</button>
+                <button id="btn-alta-cliente" class="menu-button">Cliente</button>
+                <button id="btn-alta-libro" class="menu-button">Libro</button>
+                <button id="btn-alta-visita" class="menu-button">Visita</button>
+            </div>
+            <div class="form-actions justify-center mt-8">
+                <button id="back-to-main-menu-from-altas" class="button-secondary">Menú Principal</button>
+            </div>
+        </div>
+
+        <!-- Alta Empresa Page (Page 4) -->
+        <div id="alta-empresa-page" class="page">
+            <h1 class="form-page-header">Alta Empresa</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="alta-empresa-nombre">Nombre:</label>
+                    <input type="text" id="alta-empresa-nombre" placeholder="Nombre de la empresa">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empresa-direccion">Dirección:</label>
+                    <input type="text" id="alta-empresa-direccion" placeholder="Dirección completa">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empresa-telefono">Teléfono:</label>
+                    <input type="text" id="alta-empresa-telefono" placeholder="Número de teléfono">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="register-empresa-button" class="button-primary">Registrar</button>
+                <button id="back-to-altas-menu-from-empresa" class="button-secondary">Menú Altas</button>
+            </div>
+        </div>
+
+        <!-- Modificar Menu (Page 9) -->
+        <div id="modificar-menu" class="page">
+            <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Modificar</h1>
+            <div class="menu-grid">
+                <button id="btn-modificar-empresa" class="menu-button">Empresa</button>
+                <button id="btn-modificar-empleado" class="menu-button">Empleado</button>
+                <button id="btn-modificar-vendedor" class="menu-button">Vendedor</button>
+                <button id="btn-modificar-cliente" class="menu-button">Cliente</button>
+                <button id="btn-modificar-libro" class="menu-button">Libro</button>
+                <button id="btn-modificar-visita" class="menu-button">Visita</button>
+            </div>
+            <div class="form-actions justify-center mt-8">
+                <button id="back-to-main-menu-from-modificar" class="button-secondary">Menú Principal</button>
+            </div>
+        </div>
+
+        <!-- Modificar Empresa Page (Page 10) -->
+        <div id="modificar-empresa-page" class="page">
+            <h1 class="form-page-header">Modificar Empresa</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="modificar-empresa-nombre-search">Nombre:</label>
+                    <input type="text" id="modificar-empresa-nombre-search" placeholder="Buscar por nombre">
+                </div>
+                <div class="form-actions justify-center">
+                    <button id="search-modificar-empresa" class="button-secondary">Buscar</button>
+                </div>
+                <hr class="my-6 border-t border-gray-300">
+                <div class="input-group">
+                    <label for="modificar-empresa-direccion">Dirección:</label>
+                    <input type="text" id="modificar-empresa-direccion" placeholder="Nueva dirección">
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empresa-telefono">Teléfono:</label>
+                    <input type="text" id="modificar-empresa-telefono" placeholder="Nuevo teléfono">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="modify-empresa-button" class="button-primary">Modificar</button>
+                <button id="back-to-modificar-menu-from-empresa" class="button-secondary">Menú Modificar</button>
+            </div>
+        </div>
+
+        <!-- Consulta Menu (Page 15) -->
+        <div id="consulta-menu" class="page">
+            <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Consulta</h1>
+            <div class="menu-grid">
+                <button id="btn-consulta-empresa" class="menu-button">Empresa</button>
+                <button id="btn-consulta-empleado" class="menu-button">Empleado</button>
+                <button id="btn-consulta-vendedor" class="menu-button">Vendedor</button>
+                <button id="btn-consulta-cliente" class="menu-button">Cliente</button>
+                <button id="btn-consulta-libro" class="menu-button">Libro</button>
+                <button id="btn-consulta-visita" class="menu-button">Visita</button>
+            </div>
+            <div class="form-actions justify-center mt-8">
+                <button id="back-to-main-menu-from-consulta" class="button-secondary">Menú Principal</button>
+            </div>
+        </div>
+
+        <!-- Consulta Empresa Page (Page 16) -->
+        <div id="consulta-empresa-page" class="page">
+            <h1 class="form-page-header">Consulta Empresa</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="consulta-empresa-nombre">Nombre:</label>
+                    <input type="text" id="consulta-empresa-nombre" placeholder="Nombre de la empresa a consultar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-consulta-empresa" class="button-secondary">Buscar</button>
+                <button id="clear-consulta-empresa" class="button-danger">Limpiar</button>
+            </div>
+            <div id="consulta-empresa-results" class="mt-8 p-4 bg-gray-100 rounded-lg w-full max-w-500px">
+                <!-- Results will be displayed here -->
+                <p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-consulta-menu-from-empresa" class="button-secondary">Menú Consulta</button>
+            </div>
+        </div>
+
+        <!-- Baja Menu (Page 21) -->
+        <div id="baja-menu" class="page">
+            <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Baja</h1>
+            <div class="menu-grid">
+                <button id="btn-baja-empresa" class="menu-button">Empresa</button>
+                <button id="btn-baja-empleado" class="menu-button">Empleado</button>
+                <button id="btn-baja-vendedor" class="menu-button">Vendedor</button>
+                <button id="btn-baja-cliente" class="menu-button">Cliente</button>
+                <button id="btn-baja-libro" class="menu-button">Libro</button>
+                <button id="btn-baja-visita" class="menu-button">Visita</button>
+            </div>
+            <div class="form-actions justify-center mt-8">
+                <button id="back-to-main-menu-from-baja" class="button-secondary">Menú Principal</button>
+            </div>
+        </div>
+
+        <!-- Baja Cliente Page (Page 22-23) -->
+        <div id="baja-cliente-page" class="page">
+            <h1 class="form-page-header">Baja Cliente</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="baja-cliente-numero">Número Empleado:</label>
+                    <input type="text" id="baja-cliente-numero" placeholder="Número de empleado">
+                </div>
+                <div class="input-group">
+                    <label for="baja-cliente-nombre">Nombre Empleado:</label>
+                    <input type="text" id="baja-cliente-nombre" placeholder="Nombre del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="baja-cliente-correo">Correo Empleado:</label>
+                    <input type="text" id="baja-cliente-correo" placeholder="Correo del empleado">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-baja-cliente" class="button-secondary">Buscar</button>
+                <button id="delete-baja-cliente" class="button-danger">Eliminar</button>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-baja-menu-from-cliente" class="button-secondary">Menú Baja</button>
+            </div>
+        </div>
+
+        <!-- Custom Confirmation Dialog -->
+        <div id="confirmation-dialog" class="dialog-overlay">
+            <div class="dialog-content">
+                <p id="confirmation-message">¿Estás seguro de eliminar este registro?</p>
+                <div class="dialog-actions">
+                    <button id="confirm-yes" class="button-primary">Sí</button>
+                    <button id="confirm-no" class="button-danger">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Message Dialog -->
+        <div id="message-dialog" class="dialog-overlay">
+            <div class="dialog-content">
+                <p id="message-text"></p>
+                <div class="dialog-actions">
+                    <button id="message-ok" class="button-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- End of container -->
+
+    <script type="module">
+        // Importar módulos de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, doc, getDoc, updateDoc, deleteDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables for Firebase (will be provided by the environment)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db; // Firestore instance
+        let auth; // Auth instance
+        let userId = null; // Current user ID
+
+        // Function to show a specific page and hide others
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // --- Custom Dialog Functions (replacing alert/confirm) ---
+        function showMessage(message, type = 'info') {
+            const messageDialog = document.getElementById('message-dialog');
+            const messageText = document.getElementById('message-text');
+            messageText.textContent = message;
+
+            // Optional: change color based on type (success, error, info)
+            if (type === 'error') {
+                messageText.style.color = '#ef4444';
+            } else if (type === 'success') {
+                messageText.style.color = '#4CAF50';
+            } else {
+                messageText.style.color = '#2d3748';
+            }
+
+            messageDialog.classList.add('active');
+
+            return new Promise(resolve => {
+                document.getElementById('message-ok').onclick = () => {
+                    messageDialog.classList.remove('active');
+                    resolve(true);
+                };
+            });
+        }
+
+        function showConfirmation(message) {
+            const confirmationDialog = document.getElementById('confirmation-dialog');
+            const confirmationMessage = document.getElementById('confirmation-message');
+            confirmationMessage.textContent = message;
+            confirmationDialog.classList.add('active');
+
+            return new Promise(resolve => {
+                document.getElementById('confirm-yes').onclick = () => {
+                    confirmationDialog.classList.remove('active');
+                    resolve(true);
+                };
+                document.getElementById('confirm-no').onclick = () => {
+                    confirmationDialog.classList.remove('active');
+                    resolve(false);
+                };
+            });
+        }
+
+        // --- Database Connection and Authentication ---
+        async function connectToDatabase() {
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                // Listen for authentication state changes
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("Firebase autenticado. User ID:", userId);
+                        document.getElementById('current-user-id').textContent = userId;
+                        document.getElementById('user-id-display').style.display = 'block';
+                        // After successful authentication, you might want to load user-specific data or enable more features.
+                    } else {
+                        userId = null;
+                        console.log("No hay usuario autenticado.");
+                        document.getElementById('current-user-id').textContent = 'No autenticado';
+                        document.getElementById('user-id-display').style.display = 'none';
+                    }
+                });
+
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Firebase autenticado con token personalizado.");
+                } else {
+                    await signInAnonymously(auth); // Fallback to anonymous sign-in if no custom token
+                    console.log("Firebase autenticado anónimamente.");
+                }
+
+                console.log("Firebase configurado y autenticación intentada.");
+
+            } catch (e) {
+                console.error("Error al inicializar o autenticar Firebase:", e);
+                showMessage(`Error de conexión a la base de datos: ${e.message}`, 'error');
+            }
+        }
+
+        // --- Page Navigation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial page load
+            showPage('login-page');
+
+            // Call the database connection function
+            connectToDatabase();
+
+            // Login Page Buttons
+            document.getElementById('login-button').addEventListener('click', () => {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Simple validation for demonstration (replace with actual auth logic if needed)
+                if (username === 'admin' && password === 'admin') {
+                    showMessage('Inicio de sesión exitoso.', 'success').then(() => {
+                        showPage('main-menu');
+                    });
+                } else {
+                    showMessage('Usuario o contraseña incorrectos.', 'error');
+                }
+            });
+
+            document.getElementById('exit-button').addEventListener('click', () => {
+                showMessage('Saliendo de la aplicación.', 'info');
+                // In a real application, you might close the tab or clear session
+            });
+
+            // Main Menu Buttons
+            document.getElementById('btn-alta').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('btn-modificar').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('btn-consulta').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('btn-baja').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('main-menu-logout').addEventListener('click', async () => {
+                // For demonstration, logging out will return to the login page.
+                // In a real Firebase app, you would call auth.signOut();
+                showMessage('Cerrando sesión...', 'info').then(() => {
+                    showPage('login-page');
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+                });
+            });
+
+            // Altas Menu Buttons
+            document.getElementById('back-to-main-menu-from-altas').addEventListener('click', () => showPage('main-menu'));
+            document.getElementById('btn-alta-empresa').addEventListener('click', () => showPage('alta-empresa-page'));
+            // Add listeners for other Alta forms similarly (Empleado, Vendedor, Cliente, Libro, Visita)
+            document.getElementById('btn-alta-empleado').addEventListener('click', () => showMessage('Funcionalidad "Alta Empleado" no implementada aún.').then(() => showPage('altas-menu')));
+            document.getElementById('btn-alta-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Alta Vendedor" no implementada aún.').then(() => showPage('altas-menu')));
+            document.getElementById('btn-alta-cliente').addEventListener('click', () => showMessage('Funcionalidad "Alta Cliente" no implementada aún.').then(() => showPage('altas-menu')));
+            document.getElementById('btn-alta-libro').addEventListener('click', () => showMessage('Funcionalidad "Alta Libro" no implementada aún.').then(() => showPage('altas-menu')));
+            document.getElementById('btn-alta-visita').addEventListener('click', () => showMessage('Funcionalidad "Alta Visita" no implementada aún.').then(() => showPage('altas-menu')));
+
+
+            // Alta Empresa Page Buttons
+            document.getElementById('back-to-altas-menu-from-empresa').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('register-empresa-button').addEventListener('click', async () => {
+                const nombre = document.getElementById('alta-empresa-nombre').value;
+                const direccion = document.getElementById('alta-empresa-direccion').value;
+                const telefono = document.getElementById('alta-empresa-telefono').value;
+
+                if (!db) {
+                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
+                    return;
+                }
+                if (!userId) {
+                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
+                    return;
+                }
+
+                if (nombre && direccion && telefono) {
+                    try {
+                        // Using a 'public' collection structure as per Firestore rules for collaborative apps
+                        const collectionPath = `artifacts/${appId}/public/data/empresas`; // Using 'public' for broader access example
+                        await addDoc(collection(db, collectionPath), {
+                            nombre: nombre,
+                            direccion: direccion,
+                            telefono: telefono,
+                            createdBy: userId, // Record who created the entry
+                            createdAt: new Date() // Timestamp
+                        });
+                        await showMessage('Empresa registrada exitosamente en Firestore!', 'success');
+                        // Clear form after registration
+                        document.getElementById('alta-empresa-nombre').value = '';
+                        document.getElementById('alta-empresa-direccion').value = '';
+                        document.getElementById('alta-empresa-telefono').value = '';
+                    } catch (e) {
+                        console.error("Error al registrar empresa en Firestore:", e);
+                        showMessage(`Error al registrar empresa: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Por favor, complete todos los campos.', 'error');
+                }
+            });
+
+            // Modificar Menu Buttons
+            document.getElementById('back-to-main-menu-from-modificar').addEventListener('click', () => showPage('main-menu'));
+            document.getElementById('btn-modificar-empresa').addEventListener('click', () => showPage('modificar-empresa-page'));
+            // Add listeners for other Modificar forms
+            document.getElementById('btn-modificar-empleado').addEventListener('click', () => showMessage('Funcionalidad "Modificar Empleado" no implementada aún.').then(() => showPage('modificar-menu')));
+            document.getElementById('btn-modificar-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Modificar Vendedor" no implementada aún.').then(() => showPage('modificar-menu')));
+            document.getElementById('btn-modificar-cliente').addEventListener('click', () => showMessage('Funcionalidad "Modificar Cliente" no implementada aún.').then(() => showPage('modificar-menu')));
+            document.getElementById('btn-modificar-libro').addEventListener('click', () => showMessage('Funcionalidad "Modificar Libro" no implementada aún.').then(() => showPage('modificar-menu')));
+            document.getElementById('btn-modificar-visita').addEventListener('click', () => showMessage('Funcionalidad "Modificar Visita" no implementada aún.').then(() => showPage('modificar-menu')));
+
+            // Modificar Empresa Page Buttons
+            document.getElementById('back-to-modificar-menu-from-empresa').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('search-modificar-empresa').addEventListener('click', async () => {
+                const nombreSearch = document.getElementById('modificar-empresa-nombre-search').value;
+                if (!db) {
+                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
+                    return;
+                }
+                if (!userId) {
+                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
+                    return;
+                }
+
+                if (nombreSearch) {
+                    try {
+                        const collectionPath = `artifacts/${appId}/public/data/empresas`;
+                        const q = query(collection(db, collectionPath), where("nombre", "==", nombreSearch));
+                        const querySnapshot = await getDocs(q);
+
+                        if (!querySnapshot.empty) {
+                            const docData = querySnapshot.docs[0].data();
+                            const docId = querySnapshot.docs[0].id;
+                            document.getElementById('modificar-empresa-direccion').value = docData.direccion;
+                            document.getElementById('modificar-empresa-telefono').value = docData.telefono;
+                            document.getElementById('modify-empresa-button').dataset.docId = docId; // Store doc ID for update
+                            showMessage(`Empresa "${nombreSearch}" encontrada.`, 'success');
+                            document.getElementById('modify-empresa-button').disabled = false;
+                        } else {
+                            showMessage('Empresa no encontrada.', 'error');
+                            document.getElementById('modificar-empresa-direccion').value = '';
+                            document.getElementById('modificar-empresa-telefono').value = '';
+                            document.getElementById('modify-empresa-button').dataset.docId = '';
+                            document.getElementById('modify-empresa-button').disabled = true;
+                        }
+                    } catch (e) {
+                        console.error("Error al buscar empresa en Firestore:", e);
+                        showMessage(`Error al buscar empresa: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Por favor, ingrese el nombre de la empresa a buscar.', 'error');
+                }
+            });
+            document.getElementById('modify-empresa-button').addEventListener('click', async () => {
+                const docId = document.getElementById('modify-empresa-button').dataset.docId;
+                const nombreSearch = document.getElementById('modificar-empresa-nombre-search').value;
+                const direccion = document.getElementById('modificar-empresa-direccion').value;
+                const telefono = document.getElementById('modificar-empresa-telefono').value;
+
+                if (!db) {
+                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
+                    return;
+                }
+                if (!userId) {
+                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
+                    return;
+                }
+
+                if (docId && nombreSearch && direccion && telefono) {
+                    try {
+                        const docRef = doc(db, `artifacts/${appId}/public/data/empresas`, docId);
+                        await updateDoc(docRef, {
+                            nombre: nombreSearch, // Update name as well if it was changed
+                            direccion: direccion,
+                            telefono: telefono
+                        });
+                        await showMessage('Empresa modificada exitosamente en Firestore!', 'success');
+                        // Clear fields
+                        document.getElementById('modificar-empresa-nombre-search').value = '';
+                        document.getElementById('modificar-empresa-direccion').value = '';
+                        document.getElementById('modificar-empresa-telefono').value = '';
+                        document.getElementById('modify-empresa-button').dataset.docId = '';
+                        document.getElementById('modify-empresa-button').disabled = true;
+                    } catch (e) {
+                        console.error("Error al modificar empresa en Firestore:", e);
+                        showMessage(`Error al modificar empresa: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Por favor, busque una empresa y complete todos los campos.', 'error');
+                }
+            });
+
+            // Consulta Menu Buttons
+            document.getElementById('back-to-main-menu-from-consulta').addEventListener('click', () => showPage('main-menu'));
+            document.getElementById('btn-consulta-empresa').addEventListener('click', () => showPage('consulta-empresa-page'));
+            // Add listeners for other Consulta forms
+            document.getElementById('btn-consulta-empleado').addEventListener('click', () => showMessage('Funcionalidad "Consulta Empleado" no implementada aún.').then(() => showPage('consulta-menu')));
+            document.getElementById('btn-consulta-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Consulta Vendedor" no implementada aún.').then(() => showPage('consulta-menu')));
+            document.getElementById('btn-consulta-cliente').addEventListener('click', () => showMessage('Funcionalidad "Consulta Cliente" no implementada aún.').then(() => showPage('consulta-menu')));
+            document.getElementById('btn-consulta-libro').addEventListener('click', () => showMessage('Funcionalidad "Consulta Libro" no implementada aún.').then(() => showPage('consulta-menu')));
+            document.getElementById('btn-consulta-visita').addEventListener('click', () => showMessage('Funcionalidad "Consulta Visita" no implementada aún.').then(() => showPage('consulta-menu')));
+
+
+            // Consulta Empresa Page Buttons
+            document.getElementById('back-to-consulta-menu-from-empresa').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('search-consulta-empresa').addEventListener('click', async () => {
+                const nombre = document.getElementById('consulta-empresa-nombre').value;
+                const resultsDiv = document.getElementById('consulta-empresa-results');
+                resultsDiv.innerHTML = `<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>`; // Clear previous results
+
+                if (!db) {
+                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
+                    return;
+                }
+                if (!userId) {
+                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
+                    return;
+                }
+
+                if (nombre) {
+                    try {
+                        const collectionPath = `artifacts/${appId}/public/data/empresas`;
+                        const q = query(collection(db, collectionPath), where("nombre", "==", nombre));
+                        const querySnapshot = await getDocs(q);
+
+                        if (!querySnapshot.empty) {
+                            const docData = querySnapshot.docs[0].data();
+                            resultsDiv.innerHTML = `
+                                <p class="font-bold text-lg mb-2">Resultados para "${nombre}":</p>
+                                <p><strong>Nombre:</strong> ${docData.nombre}</p>
+                                <p><strong>Dirección:</strong> ${docData.direccion}</p>
+                                <p><strong>Teléfono:</strong> ${docData.telefono}</p>
+                                <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                            `;
+                            showMessage(`Empresa "${nombre}" encontrada.`, 'success');
+                        } else {
+                            resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ninguna empresa con el nombre "${nombre}".</p>`;
+                            showMessage('Empresa no encontrada.', 'error');
+                        }
+                    } catch (e) {
+                        console.error("Error al consultar empresa en Firestore:", e);
+                        showMessage(`Error al consultar empresa: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Por favor, ingrese el nombre de la empresa a consultar.', 'error');
+                }
+            });
+            document.getElementById('clear-consulta-empresa').addEventListener('click', () => {
+                document.getElementById('consulta-empresa-nombre').value = '';
+                document.getElementById('consulta-empresa-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+
+            // Baja Menu Buttons
+            document.getElementById('back-to-main-menu-from-baja').addEventListener('click', () => showPage('main-menu'));
+            document.getElementById('btn-baja-cliente').addEventListener('click', () => showPage('baja-cliente-page'));
+            // Add listeners for other Baja forms
+            document.getElementById('btn-baja-empresa').addEventListener('click', () => showMessage('Funcionalidad "Baja Empresa" no implementada aún.').then(() => showPage('baja-menu')));
+            document.getElementById('btn-baja-empleado').addEventListener('click', () => showMessage('Funcionalidad "Baja Empleado" no implementada aún.').then(() => showPage('baja-menu')));
+            document.getElementById('btn-baja-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Baja Vendedor" no implementada aún.').then(() => showPage('baja-menu')));
+            document.getElementById('btn-baja-libro').addEventListener('click', () => showMessage('Funcionalidad "Baja Libro" no implementada aún.').then(() => showPage('baja-menu')));
+            document.getElementById('btn-baja-visita').addEventListener('click', () => showMessage('Funcionalidad "Baja Visita" no implementada aún.').then(() => showPage('baja-menu')));
+
+
+            // Baja Cliente Page Buttons
+            document.getElementById('back-to-baja-menu-from-cliente').addEventListener('click', () => showPage('baja-menu'));
+            // Placeholder for search-baja-cliente and delete-baja-cliente
+            document.getElementById('search-baja-cliente').addEventListener('click', async () => {
+                const numero = document.getElementById('baja-cliente-numero').value;
+                const nombre = document.getElementById('baja-cliente-nombre').value;
+                const correo = document.getElementById('baja-cliente-correo').value;
+
+                if (!db) {
+                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
+                    return;
+                }
+                if (!userId) {
+                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
+                    return;
+                }
+
+                if (numero || nombre || correo) {
+                    try {
+                        const collectionPath = `artifacts/${appId}/public/data/empleados`; // Assuming clientes are stored as empleados for this example
+                        let q;
+                        if (numero) {
+                            q = query(collection(db, collectionPath), where("NO_EMPLEADO_PK", "==", parseInt(numero)));
+                        } else if (nombre) {
+                            q = query(collection(db, collectionPath), where("NOM_EMPLEADO", "==", nombre));
+                        } else if (correo) {
+                            q = query(collection(db, collectionPath), where("CORREO_EMPLEADO", "==", correo));
+                        } else {
+                            showMessage('Por favor, ingrese al menos un campo para buscar al cliente.', 'error');
+                            return;
+                        }
+
+                        const querySnapshot = await getDocs(q);
+
+                        if (!querySnapshot.empty) {
+                            const docData = querySnapshot.docs[0].data();
+                            const docId = querySnapshot.docs[0].id;
+                            // For simplicity, just display that it's found
+                            showMessage(`Cliente/Empleado "${docData.NOM_EMPLEADO}" encontrado. Puede proceder a eliminarlo.`, 'success');
+                            document.getElementById('delete-baja-cliente').dataset.docId = docId; // Store doc ID for deletion
+                            document.getElementById('delete-baja-cliente').disabled = false;
+                        } else {
+                            showMessage('Cliente/Empleado no encontrado.', 'error');
+                            document.getElementById('delete-baja-cliente').dataset.docId = '';
+                            document.getElementById('delete-baja-cliente').disabled = true;
+                        }
+                    } catch (e) {
+                        console.error("Error al buscar cliente/empleado en Firestore:", e);
+                        showMessage(`Error al buscar cliente/empleado: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Por favor, ingrese al menos un campo para buscar al cliente.', 'error');
+                }
+            });
+
+            document.getElementById('delete-baja-cliente').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-cliente').dataset.docId;
+
+                if (!db) {
+                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
+                    return;
+                }
+                if (!userId) {
+                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
+                    return;
+                }
+
+                if (docIdToDelete) {
+                    const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro?`);
+                    if (confirmed) {
+                        try {
+                            const docRef = doc(db, `artifacts/${appId}/public/data/empleados`, docIdToDelete); // Adjust collection if needed
+                            await deleteDoc(docRef);
+                            await showMessage('Registro eliminado exitosamente de Firestore!', 'success');
+                            // Clear form after deletion
+                            document.getElementById('baja-cliente-numero').value = '';
+                            document.getElementById('baja-cliente-nombre').value = '';
+                            document.getElementById('baja-cliente-correo').value = '';
+                            document.getElementById('delete-baja-cliente').dataset.docId = '';
+                            document.getElementById('delete-baja-cliente').disabled = true;
+                        } catch (e) {
+                            console.error("Error al eliminar registro de Firestore:", e);
+                            showMessage(`Error al eliminar registro: ${e.message}`, 'error');
+                        }
+                    } else {
+                        showMessage('Eliminación cancelada.', 'info');
+                    }
+                } else {
+                    showMessage('Primero busque un registro para eliminar.', 'error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
