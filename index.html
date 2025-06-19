@@ -539,6 +539,14 @@
         // --- Database Connection and Authentication ---
         async function connectToDatabase() {
             try {
+                // Check if firebaseConfig is valid and contains projectId
+                if (!firebaseConfig || !firebaseConfig.projectId) {
+                    const errorMessage = "Error: La configuración de Firebase no es válida. Falta 'projectId'. Asegúrate de que el entorno de Canvas o tu configuración de Firebase esté completa.";
+                    console.error(errorMessage, firebaseConfig);
+                    showMessage(errorMessage, 'error');
+                    return;
+                }
+
                 const app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
