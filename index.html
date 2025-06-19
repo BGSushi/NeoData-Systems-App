@@ -476,9 +476,38 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, doc, getDoc, updateDoc, deleteDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables for Firebase (will be provided by the environment)
+        // Global variables for Firebase (will be provided by the environment).
+        // If you are running this code locally (outside of the Canvas environment),
+        // you MUST replace the placeholder firebaseConfig with your actual Firebase project configuration.
+        // You can find this configuration in your Firebase Console under Project settings -> Your apps.
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+
+        let firebaseConfig;
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+            try {
+                firebaseConfig = JSON.parse(__firebase_config);
+            } catch (e) {
+                console.error("Error al parsear __firebase_config:", e);
+                // Fallback to empty object if parsing fails
+                firebaseConfig = {};
+            }
+        } else {
+            // --- INSTRUCCIONES IMPORTANTES PARA EJECUCIÓN LOCAL ---
+            // Si estás ejecutando este archivo HTML directamente en tu navegador,
+            // la variable __firebase_config NO estará definida.
+            // Necesitas PEGAR AQUÍ tu objeto de configuración de Firebase REAL.
+            // Reemplaza los valores de 'TU_...' con los de tu proyecto Firebase.
+            firebaseConfig = {
+                apiKey: "TU_API_KEY_AQUI",
+                authDomain: "TU_PROJECT_ID.firebaseapp.com",
+                projectId: "TU_PROJECT_ID_AQUI", // <--- ¡Este es fundamental!
+                storageBucket: "TU_PROJECT_ID.appspot.com",
+                messagingSenderId: "TU_MESSAGING_SENDER_ID_AQUI",
+                appId: "TU_APP_ID_AQUI"
+            };
+            console.warn("ADVERTENCIA: Usando configuración de Firebase de marcador de posición. Si ejecutas localmente, reemplaza con tu configuración real.");
+        }
+
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         let db; // Firestore instance
@@ -540,8 +569,8 @@
         async function connectToDatabase() {
             try {
                 // Check if firebaseConfig is valid and contains projectId
-                if (!firebaseConfig || !firebaseConfig.projectId) {
-                    const errorMessage = "Error: La configuración de Firebase no es válida. Falta 'projectId'. Asegúrate de que el entorno de Canvas o tu configuración de Firebase esté completa.";
+                if (!firebaseConfig || !firebaseConfig.projectId || firebaseConfig.projectId === "TU_PROJECT_ID_AQUI") {
+                    const errorMessage = "Error: La configuración de Firebase no es válida. Falta 'projectId' o se está usando un marcador de posición. Asegúrate de que el entorno de Canvas o tu configuración de Firebase esté completa y sea real.";
                     console.error(errorMessage, firebaseConfig);
                     showMessage(errorMessage, 'error');
                     return;
