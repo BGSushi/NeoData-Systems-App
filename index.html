@@ -234,6 +234,33 @@
             color: #333;
             z-index: 999;
         }
+        /* Table styles for display results */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .results-table th, .results-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+        .results-table tr:last-child td {
+            border-bottom: none;
+        }
+        .results-table tr:hover {
+            background-color: #edf2f7;
+        }
     </style>
 </head>
 <body>
@@ -324,6 +351,169 @@
             </div>
         </div>
 
+        <!-- Alta Empleado Page (Page 5) -->
+        <div id="alta-empleado-page" class="page">
+            <h1 class="form-page-header">Alta Empleado</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="alta-empleado-no">Número Empleado:</label>
+                    <input type="text" id="alta-empleado-no" placeholder="Número de empleado (PK)">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-nom">Nombre Empleado:</label>
+                    <input type="text" id="alta-empleado-nom" placeholder="Nombre completo del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-legajo">Legajo:</label>
+                    <input type="text" id="alta-empleado-legajo" placeholder="Legajo del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-dir">Dirección Empleado:</label>
+                    <input type="text" id="alta-empleado-dir" placeholder="Dirección del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-tel">Teléfono Empleado:</label>
+                    <input type="text" id="alta-empleado-tel" placeholder="Teléfono del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-empresa">Empresa Empleado:</label>
+                    <input type="text" id="alta-empleado-empresa" placeholder="Empresa a la que pertenece">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-correo">Correo Empleado:</label>
+                    <input type="text" id="alta-empleado-correo" placeholder="Correo electrónico del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="alta-empleado-edad">Edad:</label>
+                    <input type="text" id="alta-empleado-edad" placeholder="Edad del empleado">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="register-empleado-button" class="button-primary">Registrar</button>
+                <button id="back-to-altas-menu-from-empleado" class="button-secondary">Menú Altas</button>
+            </div>
+        </div>
+
+        <!-- Alta Vendedor Page (Page 6) -->
+        <div id="alta-vendedor-page" class="page">
+            <h1 class="form-page-header">Alta Vendedor</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="alta-vendedor-id">ID Vendedor:</label>
+                    <input type="text" id="alta-vendedor-id" placeholder="ID del vendedor (PK)">
+                </div>
+                <div class="input-group">
+                    <label for="alta-vendedor-nombre">Nombre Vendedor:</label>
+                    <input type="text" id="alta-vendedor-nombre" placeholder="Nombre completo del vendedor">
+                </div>
+                <div class="input-group">
+                    <label for="alta-vendedor-tel">Teléfono Vendedor:</label>
+                    <input type="text" id="alta-vendedor-tel" placeholder="Teléfono del vendedor">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="register-vendedor-button" class="button-primary">Registrar</button>
+                <button id="back-to-altas-menu-from-vendedor" class="button-secondary">Menú Altas</button>
+            </div>
+        </div>
+
+        <!-- Alta Cliente (Not in PDF, but logically needed) -->
+        <div id="alta-cliente-page" class="page">
+            <h1 class="form-page-header">Alta Cliente</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="alta-cliente-id">ID Cliente:</label>
+                    <input type="text" id="alta-cliente-id" placeholder="ID del cliente (PK)">
+                </div>
+                <div class="input-group">
+                    <label for="alta-cliente-nombre">Nombre Cliente:</label>
+                    <input type="text" id="alta-cliente-nombre" placeholder="Nombre del cliente">
+                </div>
+                <div class="input-group">
+                    <label for="alta-cliente-direccion">Dirección:</label>
+                    <input type="text" id="alta-cliente-direccion" placeholder="Dirección del cliente">
+                </div>
+                <div class="input-group">
+                    <label for="alta-cliente-telefono">Teléfono:</label>
+                    <input type="text" id="alta-cliente-telefono" placeholder="Teléfono del cliente">
+                </div>
+                <div class="input-group">
+                    <label for="alta-cliente-correo">Correo:</label>
+                    <input type="text" id="alta-cliente-correo" placeholder="Correo electrónico del cliente">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="register-cliente-button" class="button-primary">Registrar</button>
+                <button id="back-to-altas-menu-from-cliente-alta" class="button-secondary">Menú Altas</button>
+            </div>
+        </div>
+
+        <!-- Alta Libro Page (Page 7) -->
+        <div id="alta-libro-page" class="page">
+            <h1 class="form-page-header">Alta Libro</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="alta-libro-id">ID Libro:</label>
+                    <input type="text" id="alta-libro-id" placeholder="ID del libro (PK)">
+                </div>
+                <div class="input-group">
+                    <label for="alta-libro-titulo">Título:</label>
+                    <input type="text" id="alta-libro-titulo" placeholder="Título del libro">
+                </div>
+                <div class="input-group">
+                    <label for="alta-libro-autor">Autor:</label>
+                    <input type="text" id="alta-libro-autor" placeholder="Autor del libro">
+                </div>
+                <div class="input-group">
+                    <label for="alta-libro-editorial">Editorial:</label>
+                    <input type="text" id="alta-libro-editorial" placeholder="Editorial del libro">
+                </div>
+                <div class="input-group">
+                    <label for="alta-libro-genero">Género:</label>
+                    <input type="text" id="alta-libro-genero" placeholder="Género del libro">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="register-libro-button" class="button-primary">Registrar</button>
+                <button id="back-to-altas-menu-from-libro" class="button-secondary">Menú Altas</button>
+            </div>
+        </div>
+
+        <!-- Alta Visita Page (Page 8) -->
+        <div id="alta-visita-page" class="page">
+            <h1 class="form-page-header">Alta Visita</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="alta-visita-id">ID Visita:</label>
+                    <input type="text" id="alta-visita-id" placeholder="ID de la visita (PK)">
+                </div>
+                <div class="input-group">
+                    <label for="alta-visita-fecha">Fecha:</label>
+                    <input type="date" id="alta-visita-fecha" placeholder="Fecha de la visita">
+                </div>
+                <div class="input-group">
+                    <label for="alta-visita-hora">Hora:</label>
+                    <input type="time" id="alta-visita-hora" placeholder="Hora de la visita">
+                </div>
+                <div class="input-group">
+                    <label for="alta-visita-res">Resultado Visita:</label>
+                    <input type="text" id="alta-visita-res" placeholder="Resultado de la visita">
+                </div>
+                <div class="input-group">
+                    <label for="alta-visita-vendedor-fk">ID Vendedor (FK):</label>
+                    <input type="text" id="alta-visita-vendedor-fk" placeholder="ID del vendedor asociado">
+                </div>
+                <div class="input-group">
+                    <label for="alta-visita-empleado-fk">No. Empleado (FK):</label>
+                    <input type="text" id="alta-visita-empleado-fk" placeholder="Número de empleado asociado">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="register-visita-button" class="button-primary">Registrar</button>
+                <button id="back-to-altas-menu-from-visita" class="button-secondary">Menú Altas</button>
+            </div>
+        </div>
+
         <!-- Modificar Menu (Page 9) -->
         <div id="modificar-menu" class="page">
             <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Modificar</h1>
@@ -354,16 +544,195 @@
                 <hr class="my-6 border-t border-gray-300">
                 <div class="input-group">
                     <label for="modificar-empresa-direccion">Dirección:</label>
-                    <input type="text" id="modificar-empresa-direccion" placeholder="Nueva dirección">
+                    <input type="text" id="modificar-empresa-direccion" placeholder="Nueva dirección" disabled>
                 </div>
                 <div class="input-group">
                     <label for="modificar-empresa-telefono">Teléfono:</label>
-                    <input type="text" id="modificar-empresa-telefono" placeholder="Nuevo teléfono">
+                    <input type="text" id="modificar-empresa-telefono" placeholder="Nuevo teléfono" disabled>
                 </div>
             </div>
             <div class="form-actions">
-                <button id="modify-empresa-button" class="button-primary">Modificar</button>
+                <button id="modify-empresa-button" class="button-primary" disabled>Modificar</button>
                 <button id="back-to-modificar-menu-from-empresa" class="button-secondary">Menú Modificar</button>
+            </div>
+        </div>
+
+        <!-- Modificar Empleado Page (Page 11) -->
+        <div id="modificar-empleado-page" class="page">
+            <h1 class="form-page-header">Modificar Empleado</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="modificar-empleado-no-search">Número Empleado:</label>
+                    <input type="text" id="modificar-empleado-no-search" placeholder="Buscar por Número de empleado">
+                </div>
+                <div class="form-actions justify-center">
+                    <button id="search-modificar-empleado" class="button-secondary">Buscar</button>
+                </div>
+                <hr class="my-6 border-t border-gray-300">
+                <div class="input-group">
+                    <label for="modificar-empleado-nom">Nombre Empleado:</label>
+                    <input type="text" id="modificar-empleado-nom" placeholder="Nombre completo del empleado" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empleado-legajo">Legajo:</label>
+                    <input type="text" id="modificar-empleado-legajo" placeholder="Legajo del empleado" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empleado-dir">Dirección Empleado:</label>
+                    <input type="text" id="modificar-empleado-dir" placeholder="Dirección del empleado" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empleado-tel">Teléfono Empleado:</label>
+                    <input type="text" id="modificar-empleado-tel" placeholder="Teléfono del empleado" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empleado-empresa">Empresa Empleado:</label>
+                    <input type="text" id="modificar-empleado-empresa" placeholder="Empresa a la que pertenece" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empleado-correo">Correo Empleado:</label>
+                    <input type="text" id="modificar-empleado-correo" placeholder="Correo electrónico del empleado" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-empleado-edad">Edad:</label>
+                    <input type="text" id="modificar-empleado-edad" placeholder="Edad del empleado" disabled>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="modify-empleado-button" class="button-primary" disabled>Modificar</button>
+                <button id="back-to-modificar-menu-from-empleado" class="button-secondary">Menú Modificar</button>
+            </div>
+        </div>
+
+        <!-- Modificar Vendedor Page (Page 12) -->
+        <div id="modificar-vendedor-page" class="page">
+            <h1 class="form-page-header">Modificar Vendedor</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="modificar-vendedor-id-search">ID Vendedor:</label>
+                    <input type="text" id="modificar-vendedor-id-search" placeholder="Buscar por ID del vendedor">
+                </div>
+                <div class="form-actions justify-center">
+                    <button id="search-modificar-vendedor" class="button-secondary">Buscar</button>
+                </div>
+                <hr class="my-6 border-t border-gray-300">
+                <div class="input-group">
+                    <label for="modificar-vendedor-nombre">Nombre Vendedor:</label>
+                    <input type="text" id="modificar-vendedor-nombre" placeholder="Nuevo nombre del vendedor" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-vendedor-tel">Teléfono Vendedor:</label>
+                    <input type="text" id="modificar-vendedor-tel" placeholder="Nuevo teléfono del vendedor" disabled>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="modify-vendedor-button" class="button-primary" disabled>Modificar</button>
+                <button id="back-to-modificar-menu-from-vendedor" class="button-secondary">Menú Modificar</button>
+            </div>
+        </div>
+
+        <!-- Modificar Cliente Page (not in PDF but necessary) -->
+        <div id="modificar-cliente-page" class="page">
+            <h1 class="form-page-header">Modificar Cliente</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="modificar-cliente-id-search">ID Cliente:</label>
+                    <input type="text" id="modificar-cliente-id-search" placeholder="Buscar por ID del cliente">
+                </div>
+                <div class="form-actions justify-center">
+                    <button id="search-modificar-cliente" class="button-secondary">Buscar</button>
+                </div>
+                <hr class="my-6 border-t border-gray-300">
+                <div class="input-group">
+                    <label for="modificar-cliente-nombre">Nombre Cliente:</label>
+                    <input type="text" id="modificar-cliente-nombre" placeholder="Nuevo nombre del cliente" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-cliente-direccion">Dirección:</label>
+                    <input type="text" id="modificar-cliente-direccion" placeholder="Nueva dirección del cliente" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-cliente-telefono">Teléfono:</label>
+                    <input type="text" id="modificar-cliente-telefono" placeholder="Nuevo teléfono del cliente" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-cliente-correo">Correo:</label>
+                    <input type="text" id="modificar-cliente-correo" placeholder="Nuevo correo electrónico del cliente" disabled>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="modify-cliente-button" class="button-primary" disabled>Modificar</button>
+                <button id="back-to-modificar-menu-from-cliente" class="button-secondary">Menú Modificar</button>
+            </div>
+        </div>
+
+        <!-- Modificar Libro Page (Page 13) -->
+        <div id="modificar-libro-page" class="page">
+            <h1 class="form-page-header">Modificar Libro</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="modificar-libro-titulo-search">Título Libro:</label>
+                    <input type="text" id="modificar-libro-titulo-search" placeholder="Buscar por título del libro">
+                </div>
+                <div class="form-actions justify-center">
+                    <button id="search-modificar-libro" class="button-secondary">Buscar</button>
+                </div>
+                <hr class="my-6 border-t border-gray-300">
+                <div class="input-group">
+                    <label for="modificar-libro-autor">Autor:</label>
+                    <input type="text" id="modificar-libro-autor" placeholder="Nuevo autor del libro" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-libro-editorial">Editorial:</label>
+                    <input type="text" id="modificar-libro-editorial" placeholder="Nueva editorial del libro" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-libro-genero">Género:</label>
+                    <input type="text" id="modificar-libro-genero" placeholder="Nuevo género del libro" disabled>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="modify-libro-button" class="button-primary" disabled>Modificar</button>
+                <button id="back-to-modificar-menu-from-libro" class="button-secondary">Menú Modificar</button>
+            </div>
+        </div>
+
+        <!-- Modificar Visita Page (Page 14) -->
+        <div id="modificar-visita-page" class="page">
+            <h1 class="form-page-header">Modificar Visita</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="modificar-visita-id-search">ID Visita:</label>
+                    <input type="text" id="modificar-visita-id-search" placeholder="Buscar por ID de la visita">
+                </div>
+                <div class="form-actions justify-center">
+                    <button id="search-modificar-visita" class="button-secondary">Buscar</button>
+                </div>
+                <hr class="my-6 border-t border-gray-300">
+                <div class="input-group">
+                    <label for="modificar-visita-fecha">Fecha:</label>
+                    <input type="date" id="modificar-visita-fecha" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-visita-hora">Hora:</label>
+                    <input type="time" id="modificar-visita-hora" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-visita-res">Resultado Visita:</label>
+                    <input type="text" id="modificar-visita-res" placeholder="Nuevo resultado de la visita" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-visita-vendedor-fk">ID Vendedor (FK):</label>
+                    <input type="text" id="modificar-visita-vendedor-fk" placeholder="Nuevo ID del vendedor asociado" disabled>
+                </div>
+                <div class="input-group">
+                    <label for="modificar-visita-empleado-fk">No. Empleado (FK):</label>
+                    <input type="text" id="modificar-visita-empleado-fk" placeholder="Nuevo Número de empleado asociado" disabled>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button id="modify-visita-button" class="button-primary" disabled>Modificar</button>
+                <button id="back-to-modificar-menu-from-visita" class="button-secondary">Menú Modificar</button>
             </div>
         </div>
 
@@ -405,6 +774,112 @@
             </div>
         </div>
 
+        <!-- Consulta Empleado Page (Page 18) -->
+        <div id="consulta-empleado-page" class="page">
+            <h1 class="form-page-header">Consulta Empleado</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="consulta-empleado-nombre">Nombre Empleado:</label>
+                    <input type="text" id="consulta-empleado-nombre" placeholder="Nombre del empleado a consultar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-consulta-empleado" class="button-secondary">Buscar</button>
+                <button id="clear-consulta-empleado" class="button-danger">Limpiar</button>
+            </div>
+            <div id="consulta-empleado-results" class="mt-8 p-4 bg-gray-100 rounded-lg w-full max-w-500px">
+                <p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-consulta-menu-from-empleado" class="button-secondary">Menú Consulta</button>
+            </div>
+        </div>
+
+        <!-- Consulta Vendedor Page (not in PDF but necessary) -->
+        <div id="consulta-vendedor-page" class="page">
+            <h1 class="form-page-header">Consulta Vendedor</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="consulta-vendedor-nombre">Nombre Vendedor:</label>
+                    <input type="text" id="consulta-vendedor-nombre" placeholder="Nombre del vendedor a consultar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-consulta-vendedor" class="button-secondary">Buscar</button>
+                <button id="clear-consulta-vendedor" class="button-danger">Limpiar</button>
+            </div>
+            <div id="consulta-vendedor-results" class="mt-8 p-4 bg-gray-100 rounded-lg w-full max-w-500px">
+                <p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-consulta-menu-from-vendedor" class="button-secondary">Menú Consulta</button>
+            </div>
+        </div>
+
+        <!-- Consulta Cliente Page (Page 17) -->
+        <div id="consulta-cliente-page" class="page">
+            <h1 class="form-page-header">Consulta Cliente</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="consulta-cliente-nombre">Nombre Cliente:</label>
+                    <input type="text" id="consulta-cliente-nombre" placeholder="Nombre del cliente a consultar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-consulta-cliente" class="button-secondary">Buscar</button>
+                <button id="clear-consulta-cliente" class="button-danger">Limpiar</button>
+            </div>
+            <div id="consulta-cliente-results" class="mt-8 p-4 bg-gray-100 rounded-lg w-full max-w-500px">
+                <p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-consulta-menu-from-cliente" class="button-secondary">Menú Consulta</button>
+            </div>
+        </div>
+
+        <!-- Consulta Libro Page (Page 20) -->
+        <div id="consulta-libro-page" class="page">
+            <h1 class="form-page-header">Consulta Libro</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="consulta-libro-titulo">Título:</label>
+                    <input type="text" id="consulta-libro-titulo" placeholder="Título del libro a consultar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-consulta-libro" class="button-secondary">Buscar</button>
+                <button id="clear-consulta-libro" class="button-danger">Limpiar</button>
+            </div>
+            <div id="consulta-libro-results" class="mt-8 p-4 bg-gray-100 rounded-lg w-full max-w-500px">
+                <p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-consulta-menu-from-libro" class="button-secondary">Menú Consulta</button>
+            </div>
+        </div>
+
+        <!-- Consulta Visita Page (Page 19) -->
+        <div id="consulta-visita-page" class="page">
+            <h1 class="form-page-header">Consulta Visita</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="consulta-visita-numero">Número de visita:</label>
+                    <input type="text" id="consulta-visita-numero" placeholder="Número de visita a consultar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-consulta-visita" class="button-secondary">Buscar</button>
+                <button id="clear-consulta-visita" class="button-danger">Limpiar</button>
+            </div>
+            <div id="consulta-visita-results" class="mt-8 p-4 bg-gray-100 rounded-lg w-full max-w-500px">
+                <p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-consulta-menu-from-visita" class="button-secondary">Menú Consulta</button>
+            </div>
+        </div>
+
+
         <!-- Baja Menu (Page 21) -->
         <div id="baja-menu" class="page">
             <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Baja</h1>
@@ -421,29 +896,143 @@
             </div>
         </div>
 
-        <!-- Baja Cliente Page (Page 22-23) -->
+        <!-- Baja Empresa Page (not in PDF but necessary) -->
+        <div id="baja-empresa-page" class="page">
+            <h1 class="form-page-header">Baja Empresa</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="baja-empresa-nombre">Nombre Empresa:</label>
+                    <input type="text" id="baja-empresa-nombre" placeholder="Nombre de la empresa a eliminar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-baja-empresa" class="button-secondary">Buscar</button>
+                <button id="delete-baja-empresa" class="button-danger" disabled>Eliminar</button>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-baja-menu-from-empresa" class="button-secondary">Menú Baja</button>
+            </div>
+        </div>
+
+        <!-- Baja Empleado Page (similar to Cliente) -->
+        <div id="baja-empleado-page" class="page">
+            <h1 class="form-page-header">Baja Empleado</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="baja-empleado-no">Número Empleado:</label>
+                    <input type="text" id="baja-empleado-no" placeholder="Número de empleado">
+                </div>
+                <div class="input-group">
+                    <label for="baja-empleado-nom">Nombre Empleado:</label>
+                    <input type="text" id="baja-empleado-nom" placeholder="Nombre del empleado">
+                </div>
+                <div class="input-group">
+                    <label for="baja-empleado-correo">Correo Empleado:</label>
+                    <input type="text" id="baja-empleado-correo" placeholder="Correo del empleado">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-baja-empleado" class="button-secondary">Buscar</button>
+                <button id="delete-baja-empleado" class="button-danger" disabled>Eliminar</button>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-baja-menu-from-empleado" class="button-secondary">Menú Baja</button>
+            </div>
+        </div>
+
+        <!-- Baja Vendedor Page (Page 24-25) -->
+        <div id="baja-vendedor-page" class="page">
+            <h1 class="form-page-header">Baja Vendedor</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="baja-vendedor-id">Número Vendedor:</label>
+                    <input type="text" id="baja-vendedor-id" placeholder="Número de vendedor">
+                </div>
+                <div class="input-group">
+                    <label for="baja-vendedor-nombre">Nombre Vendedor:</label>
+                    <input type="text" id="baja-vendedor-nombre" placeholder="Nombre del vendedor">
+                </div>
+                <div class="input-group">
+                    <label for="baja-vendedor-correo">Correo Vendedor:</label>
+                    <input type="text" id="baja-vendedor-correo" placeholder="Correo del vendedor">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-baja-vendedor" class="button-secondary">Buscar</button>
+                <button id="delete-baja-vendedor" class="button-danger" disabled>Eliminar</button>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-baja-menu-from-vendedor" class="button-secondary">Menú Baja</button>
+            </div>
+        </div>
+
+        <!-- Baja Cliente Page (Page 22-23 - Re-using the id, logic adjusted for 'clientes' collection) -->
         <div id="baja-cliente-page" class="page">
             <h1 class="form-page-header">Baja Cliente</h1>
             <div class="form-content">
                 <div class="input-group">
-                    <label for="baja-cliente-numero">Número Empleado:</label>
-                    <input type="text" id="baja-cliente-numero" placeholder="Número de empleado">
+                    <label for="baja-cliente-id">ID Cliente:</label>
+                    <input type="text" id="baja-cliente-id" placeholder="ID del cliente">
                 </div>
                 <div class="input-group">
-                    <label for="baja-cliente-nombre">Nombre Empleado:</label>
-                    <input type="text" id="baja-cliente-nombre" placeholder="Nombre del empleado">
+                    <label for="baja-cliente-nombre-baja">Nombre Cliente:</label>
+                    <input type="text" id="baja-cliente-nombre-baja" placeholder="Nombre del cliente">
                 </div>
                 <div class="input-group">
-                    <label for="baja-cliente-correo">Correo Empleado:</label>
-                    <input type="text" id="baja-cliente-correo" placeholder="Correo del empleado">
+                    <label for="baja-cliente-correo-baja">Correo Cliente:</label>
+                    <input type="text" id="baja-cliente-correo-baja" placeholder="Correo del cliente">
                 </div>
             </div>
             <div class="form-actions justify-center">
                 <button id="search-baja-cliente" class="button-secondary">Buscar</button>
-                <button id="delete-baja-cliente" class="button-danger">Eliminar</button>
+                <button id="delete-baja-cliente" class="button-danger" disabled>Eliminar</button>
             </div>
             <div class="form-actions">
                 <button id="back-to-baja-menu-from-cliente" class="button-secondary">Menú Baja</button>
+            </div>
+        </div>
+
+        <!-- Baja Libro Page (Page 26-27) -->
+        <div id="baja-libro-page" class="page">
+            <h1 class="form-page-header">Baja Libro</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="baja-libro-titulo">Título Libro:</label>
+                    <input type="text" id="baja-libro-titulo" placeholder="Título del libro a eliminar">
+                </div>
+                <div class="input-group">
+                    <label for="baja-libro-autor">Autor:</label>
+                    <input type="text" id="baja-libro-autor" placeholder="Autor del libro">
+                </div>
+                <div class="input-group">
+                    <label for="baja-libro-editorial">Editorial:</label>
+                    <input type="text" id="baja-libro-editorial" placeholder="Editorial del libro">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-baja-libro" class="button-secondary">Buscar</button>
+                <button id="delete-baja-libro" class="button-danger" disabled>Eliminar</button>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-baja-menu-from-libro" class="button-secondary">Menú Baja</button>
+            </div>
+        </div>
+
+        <!-- Baja Visita Page (not in PDF but necessary) -->
+        <div id="baja-visita-page" class="page">
+            <h1 class="form-page-header">Baja Visita</h1>
+            <div class="form-content">
+                <div class="input-group">
+                    <label for="baja-visita-id">ID Visita:</label>
+                    <input type="text" id="baja-visita-id" placeholder="ID de la visita a eliminar">
+                </div>
+            </div>
+            <div class="form-actions justify-center">
+                <button id="search-baja-visita" class="button-secondary">Buscar</button>
+                <button id="delete-baja-visita" class="button-danger" disabled>Eliminar</button>
+            </div>
+            <div class="form-actions">
+                <button id="back-to-baja-menu-from-visita" class="button-secondary">Menú Baja</button>
             </div>
         </div>
 
@@ -498,45 +1087,47 @@
             // Necesitas PEGAR AQUÍ tu objeto de configuración de Firebase REAL.
             // Reemplaza los valores de 'TU_...' con los de tu proyecto Firebase.
             firebaseConfig = {
-              apiKey: "AIzaSyBc_rQ-DMCSucuSexNpkxw6KOBJFIw7Xrk",
-
-  authDomain: "neodata-systems.firebaseapp.com",
-
-  projectId: "neodata-systems",
-
-  storageBucket: "neodata-systems.firebasestorage.app",
-
-  messagingSenderId: "348501458904",
-
-  appId: "1:348501458904:web:e00af0a7985e665829fcad",
-
-  measurementId: "G-CKNTG7PJCL"
-
+                apiKey: "TU_API_KEY_AQUI", // Reemplaza con tu apiKey
+                authDomain: "TU_PROJECT_ID.firebaseapp.com", // Reemplaza con tu authDomain
+                projectId: "TU_PROJECT_ID_AQUI", // <--- ¡Este es fundamental! Reemplaza con tu projectId
+                storageBucket: "TU_PROJECT_ID.appspot.com", // Reemplaza con tu storageBucket
+                messagingSenderId: "TU_MESSAGING_SENDER_ID_AQUI", // Reemplaza con tu messagingSenderId
+                appId: "TU_APP_ID_AQUI" // Reemplaza con tu appId
             };
             console.warn("ADVERTENCIA: Usando configuración de Firebase de marcador de posición. Si ejecutas localmente, reemplaza con tu configuración real.");
         }
 
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-        let db; // Firestore instance
-        let auth; // Auth instance
-        let userId = null; // Current user ID
+        let db; // Instancia de Firestore
+        let auth; // Instancia de Auth
+        let userId = null; // ID del usuario actual
 
-        // Function to show a specific page and hide others
+        // Función para mostrar una página específica y ocultar las demás
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+            // Limpiar campos de formularios al cambiar de página para evitar datos residuales
+            document.querySelectorAll('.input-group input, .input-group textarea').forEach(input => input.value = '');
+            document.querySelectorAll('.results-table, [id$="-results"]').forEach(div => {
+                div.innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+            // Deshabilitar botones de modificar/eliminar por defecto
+            document.querySelectorAll('[id^="modify-"][id$="-button"], [id^="delete-"][id$="-button"]').forEach(btn => btn.disabled = true);
+            document.querySelectorAll('[id^="modificar-"][id$="-search"]').forEach(input => {
+                const formInputs = input.closest('.form-content').querySelectorAll('input:not([id$="-search"]), textarea');
+                formInputs.forEach(inputEl => inputEl.disabled = true);
+            });
         }
 
-        // --- Custom Dialog Functions (replacing alert/confirm) ---
+        // --- Funciones para Diálogos Personalizados (reemplazando alert/confirm) ---
         function showMessage(message, type = 'info') {
             const messageDialog = document.getElementById('message-dialog');
             const messageText = document.getElementById('message-text');
             messageText.textContent = message;
 
-            // Optional: change color based on type (success, error, info)
             if (type === 'error') {
                 messageText.style.color = '#ef4444';
             } else if (type === 'success') {
@@ -573,10 +1164,9 @@
             });
         }
 
-        // --- Database Connection and Authentication ---
+        // --- Conexión a la Base de Datos y Autenticación ---
         async function connectToDatabase() {
             try {
-                // Check if firebaseConfig is valid and contains projectId
                 if (!firebaseConfig || !firebaseConfig.projectId || firebaseConfig.projectId === "TU_PROJECT_ID_AQUI") {
                     const errorMessage = "Error: La configuración de Firebase no es válida. Falta 'projectId' o se está usando un marcador de posición. Asegúrate de que el entorno de Canvas o tu configuración de Firebase esté completa y sea real.";
                     console.error(errorMessage, firebaseConfig);
@@ -588,14 +1178,12 @@
                 db = getFirestore(app);
                 auth = getAuth(app);
 
-                // Listen for authentication state changes
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         userId = user.uid;
                         console.log("Firebase autenticado. User ID:", userId);
                         document.getElementById('current-user-id').textContent = userId;
                         document.getElementById('user-id-display').style.display = 'block';
-                        // After successful authentication, you might want to load user-specific data or enable more features.
                     } else {
                         userId = null;
                         console.log("No hay usuario autenticado.");
@@ -608,7 +1196,7 @@
                     await signInWithCustomToken(auth, initialAuthToken);
                     console.log("Firebase autenticado con token personalizado.");
                 } else {
-                    await signInAnonymously(auth); // Fallback to anonymous sign-in if no custom token
+                    await signInAnonymously(auth);
                     console.log("Firebase autenticado anónimamente.");
                 }
 
@@ -620,12 +1208,9 @@
             }
         }
 
-        // --- Page Navigation Logic ---
+        // --- Lógica de Navegación entre Páginas ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Initial page load
             showPage('login-page');
-
-            // Call the database connection function
             connectToDatabase();
 
             // Login Page Buttons
@@ -633,7 +1218,6 @@
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
 
-                // Simple validation for demonstration (replace with actual auth logic if needed)
                 if (username === 'admin' && password === 'admin') {
                     showMessage('Inicio de sesión exitoso.', 'success').then(() => {
                         showPage('main-menu');
@@ -645,7 +1229,6 @@
 
             document.getElementById('exit-button').addEventListener('click', () => {
                 showMessage('Saliendo de la aplicación.', 'info');
-                // In a real application, you might close the tab or clear session
             });
 
             // Main Menu Buttons
@@ -654,8 +1237,6 @@
             document.getElementById('btn-consulta').addEventListener('click', () => showPage('consulta-menu'));
             document.getElementById('btn-baja').addEventListener('click', () => showPage('baja-menu'));
             document.getElementById('main-menu-logout').addEventListener('click', async () => {
-                // For demonstration, logging out will return to the login page.
-                // In a real Firebase app, you would call auth.signOut();
                 showMessage('Cerrando sesión...', 'info').then(() => {
                     showPage('login-page');
                     document.getElementById('username').value = '';
@@ -663,202 +1244,722 @@
                 });
             });
 
-            // Altas Menu Buttons
+            // --- Menu de Altas ---
             document.getElementById('back-to-main-menu-from-altas').addEventListener('click', () => showPage('main-menu'));
             document.getElementById('btn-alta-empresa').addEventListener('click', () => showPage('alta-empresa-page'));
-            // Add listeners for other Alta forms similarly (Empleado, Vendedor, Cliente, Libro, Visita)
-            document.getElementById('btn-alta-empleado').addEventListener('click', () => showMessage('Funcionalidad "Alta Empleado" no implementada aún.').then(() => showPage('altas-menu')));
-            document.getElementById('btn-alta-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Alta Vendedor" no implementada aún.').then(() => showPage('altas-menu')));
-            document.getElementById('btn-alta-cliente').addEventListener('click', () => showMessage('Funcionalidad "Alta Cliente" no implementada aún.').then(() => showPage('altas-menu')));
-            document.getElementById('btn-alta-libro').addEventListener('click', () => showMessage('Funcionalidad "Alta Libro" no implementada aún.').then(() => showPage('altas-menu')));
-            document.getElementById('btn-alta-visita').addEventListener('click', () => showMessage('Funcionalidad "Alta Visita" no implementada aún.').then(() => showPage('altas-menu')));
+            document.getElementById('btn-alta-empleado').addEventListener('click', () => showPage('alta-empleado-page'));
+            document.getElementById('btn-alta-vendedor').addEventListener('click', () => showPage('alta-vendedor-page'));
+            document.getElementById('btn-alta-cliente').addEventListener('click', () => showPage('alta-cliente-page'));
+            document.getElementById('btn-alta-libro').addEventListener('click', () => showPage('alta-libro-page'));
+            document.getElementById('btn-alta-visita').addEventListener('click', () => showPage('alta-visita-page'));
 
-
-            // Alta Empresa Page Buttons
+            // --- ALTA Funcionalidades ---
+            // Alta Empresa
             document.getElementById('back-to-altas-menu-from-empresa').addEventListener('click', () => showPage('altas-menu'));
             document.getElementById('register-empresa-button').addEventListener('click', async () => {
                 const nombre = document.getElementById('alta-empresa-nombre').value;
                 const direccion = document.getElementById('alta-empresa-direccion').value;
                 const telefono = document.getElementById('alta-empresa-telefono').value;
 
-                if (!db) {
-                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
-                    return;
-                }
-                if (!userId) {
-                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
-                    return;
-                }
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombre || !direccion || !telefono) { showMessage('Por favor, complete todos los campos.', 'error'); return; }
 
-                if (nombre && direccion && telefono) {
-                    try {
-                        // Using a 'public' collection structure as per Firestore rules for collaborative apps
-                        const collectionPath = `artifacts/${appId}/public/data/empresas`; // Using 'public' for broader access example
-                        await addDoc(collection(db, collectionPath), {
-                            nombre: nombre,
-                            direccion: direccion,
-                            telefono: telefono,
-                            createdBy: userId, // Record who created the entry
-                            createdAt: new Date() // Timestamp
-                        });
-                        await showMessage('Empresa registrada exitosamente en Firestore!', 'success');
-                        // Clear form after registration
-                        document.getElementById('alta-empresa-nombre').value = '';
-                        document.getElementById('alta-empresa-direccion').value = '';
-                        document.getElementById('alta-empresa-telefono').value = '';
-                    } catch (e) {
-                        console.error("Error al registrar empresa en Firestore:", e);
-                        showMessage(`Error al registrar empresa: ${e.message}`, 'error');
-                    }
-                } else {
-                    showMessage('Por favor, complete todos los campos.', 'error');
+                try {
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/empresas`), {
+                        nombre: nombre,
+                        direccion: direccion,
+                        telefono: telefono,
+                        createdBy: userId,
+                        createdAt: new Date()
+                    });
+                    await showMessage('Empresa registrada exitosamente en Firestore!', 'success');
+                    document.getElementById('alta-empresa-nombre').value = '';
+                    document.getElementById('alta-empresa-direccion').value = '';
+                    document.getElementById('alta-empresa-telefono').value = '';
+                } catch (e) {
+                    console.error("Error al registrar empresa en Firestore:", e);
+                    showMessage(`Error al registrar empresa: ${e.message}`, 'error');
                 }
             });
 
-            // Modificar Menu Buttons
+            // Alta Empleado
+            document.getElementById('back-to-altas-menu-from-empleado').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('register-empleado-button').addEventListener('click', async () => {
+                const noEmpleado = parseInt(document.getElementById('alta-empleado-no').value);
+                const nomEmpleado = document.getElementById('alta-empleado-nom').value;
+                const legajo = document.getElementById('alta-empleado-legajo').value;
+                const dirEmpleado = document.getElementById('alta-empleado-dir').value;
+                const telEmpleado = document.getElementById('alta-empleado-tel').value;
+                const empresaEmpleado = document.getElementById('alta-empleado-empresa').value;
+                const correoEmpleado = document.getElementById('alta-empleado-correo').value;
+                const edad = parseInt(document.getElementById('alta-empleado-edad').value);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(noEmpleado) || !nomEmpleado || !legajo || !dirEmpleado || !telEmpleado || !empresaEmpleado || !correoEmpleado || isNaN(edad)) { showMessage('Por favor, complete todos los campos y verifique los números.', 'error'); return; }
+
+                try {
+                    // Using setDoc with a specific ID (PK from SQL)
+                    const docRef = doc(db, `artifacts/${appId}/public/data/empleados`, noEmpleado.toString());
+                    await setDoc(docRef, {
+                        noEmpleado: noEmpleado,
+                        nomEmpleado: nomEmpleado,
+                        legajo: legajo,
+                        dirEmpleado: dirEmpleado,
+                        telEmpleado: telEmpleado,
+                        empresaEmpleado: empresaEmpleado,
+                        correoEmpleado: correoEmpleado,
+                        edad: edad,
+                        createdBy: userId,
+                        createdAt: new Date()
+                    });
+                    await showMessage('Empleado registrado exitosamente en Firestore!', 'success');
+                    document.getElementById('alta-empleado-no').value = '';
+                    document.getElementById('alta-empleado-nom').value = '';
+                    document.getElementById('alta-empleado-legajo').value = '';
+                    document.getElementById('alta-empleado-dir').value = '';
+                    document.getElementById('alta-empleado-tel').value = '';
+                    document.getElementById('alta-empleado-empresa').value = '';
+                    document.getElementById('alta-empleado-correo').value = '';
+                    document.getElementById('alta-empleado-edad').value = '';
+                } catch (e) {
+                    console.error("Error al registrar empleado en Firestore:", e);
+                    showMessage(`Error al registrar empleado: ${e.message}`, 'error');
+                }
+            });
+
+            // Alta Vendedor
+            document.getElementById('back-to-altas-menu-from-vendedor').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('register-vendedor-button').addEventListener('click', async () => {
+                const idVendedor = parseInt(document.getElementById('alta-vendedor-id').value);
+                const nombreVendedor = document.getElementById('alta-vendedor-nombre').value;
+                const telVendedor = document.getElementById('alta-vendedor-tel').value;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idVendedor) || !nombreVendedor || !telVendedor) { showMessage('Por favor, complete todos los campos y verifique los números.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/vendedores`, idVendedor.toString());
+                    await setDoc(docRef, {
+                        idVendedor: idVendedor,
+                        nombreVendedor: nombreVendedor,
+                        telVendedor: telVendedor,
+                        createdBy: userId,
+                        createdAt: new Date()
+                    });
+                    await showMessage('Vendedor registrado exitosamente en Firestore!', 'success');
+                    document.getElementById('alta-vendedor-id').value = '';
+                    document.getElementById('alta-vendedor-nombre').value = '';
+                    document.getElementById('alta-vendedor-tel').value = '';
+                } catch (e) {
+                    console.error("Error al registrar vendedor en Firestore:", e);
+                    showMessage(`Error al registrar vendedor: ${e.message}`, 'error');
+                }
+            });
+
+            // Alta Cliente (Asumiendo que Cliente tiene estructura similar a Empleado o Vendedor para simplificar)
+            document.getElementById('back-to-altas-menu-from-cliente-alta').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('register-cliente-button').addEventListener('click', async () => {
+                const idCliente = parseInt(document.getElementById('alta-cliente-id').value);
+                const nombreCliente = document.getElementById('alta-cliente-nombre').value;
+                const direccion = document.getElementById('alta-cliente-direccion').value;
+                const telefono = document.getElementById('alta-cliente-telefono').value;
+                const correo = document.getElementById('alta-cliente-correo').value;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idCliente) || !nombreCliente || !direccion || !telefono || !correo) { showMessage('Por favor, complete todos los campos y verifique los números.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/clientes`, idCliente.toString());
+                    await setDoc(docRef, {
+                        idCliente: idCliente,
+                        nombreCliente: nombreCliente,
+                        direccion: direccion,
+                        telefono: telefono,
+                        correo: correo,
+                        createdBy: userId,
+                        createdAt: new Date()
+                    });
+                    await showMessage('Cliente registrado exitosamente en Firestore!', 'success');
+                    document.getElementById('alta-cliente-id').value = '';
+                    document.getElementById('alta-cliente-nombre').value = '';
+                    document.getElementById('alta-cliente-direccion').value = '';
+                    document.getElementById('alta-cliente-telefono').value = '';
+                    document.getElementById('alta-cliente-correo').value = '';
+                } catch (e) {
+                    console.error("Error al registrar cliente en Firestore:", e);
+                    showMessage(`Error al registrar cliente: ${e.message}`, 'error');
+                }
+            });
+
+            // Alta Libro
+            document.getElementById('back-to-altas-menu-from-libro').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('register-libro-button').addEventListener('click', async () => {
+                const idLibro = parseInt(document.getElementById('alta-libro-id').value);
+                const titulo = document.getElementById('alta-libro-titulo').value;
+                const autor = document.getElementById('alta-libro-autor').value;
+                const editorial = document.getElementById('alta-libro-editorial').value;
+                const genero = document.getElementById('alta-libro-genero').value;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idLibro) || !titulo || !autor || !editorial || !genero) { showMessage('Por favor, complete todos los campos y verifique los números.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/libros`, idLibro.toString());
+                    await setDoc(docRef, {
+                        idLibro: idLibro,
+                        titulo: titulo,
+                        autor: autor,
+                        editorial: editorial,
+                        genero: genero,
+                        createdBy: userId,
+                        createdAt: new Date()
+                    });
+                    await showMessage('Libro registrado exitosamente en Firestore!', 'success');
+                    document.getElementById('alta-libro-id').value = '';
+                    document.getElementById('alta-libro-titulo').value = '';
+                    document.getElementById('alta-libro-autor').value = '';
+                    document.getElementById('alta-libro-editorial').value = '';
+                    document.getElementById('alta-libro-genero').value = '';
+                } catch (e) {
+                    console.error("Error al registrar libro en Firestore:", e);
+                    showMessage(`Error al registrar libro: ${e.message}`, 'error');
+                }
+            });
+
+            // Alta Visita
+            document.getElementById('back-to-altas-menu-from-visita').addEventListener('click', () => showPage('altas-menu'));
+            document.getElementById('register-visita-button').addEventListener('click', async () => {
+                const idVisita = parseInt(document.getElementById('alta-visita-id').value);
+                const fechaVisita = document.getElementById('alta-visita-fecha').value;
+                const horaVisita = document.getElementById('alta-visita-hora').value;
+                const resVisita = document.getElementById('alta-visita-res').value;
+                const idVendedorFk = parseInt(document.getElementById('alta-visita-vendedor-fk').value);
+                const noEmpleadoFk = parseInt(document.getElementById('alta-visita-empleado-fk').value);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idVisita) || !fechaVisita || !horaVisita || !resVisita || isNaN(idVendedorFk) || isNaN(noEmpleadoFk)) { showMessage('Por favor, complete todos los campos y verifique los números/fechas.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/visitas`, idVisita.toString());
+                    await setDoc(docRef, {
+                        idVisita: idVisita,
+                        fechaVisita: fechaVisita,
+                        horaVisita: horaVisita,
+                        resVisita: resVisita,
+                        idVendedorFk: idVendedorFk,
+                        noEmpleadoFk: noEmpleadoFk,
+                        createdBy: userId,
+                        createdAt: new Date()
+                    });
+                    await showMessage('Visita registrada exitosamente en Firestore!', 'success');
+                    document.getElementById('alta-visita-id').value = '';
+                    document.getElementById('alta-visita-fecha').value = '';
+                    document.getElementById('alta-visita-hora').value = '';
+                    document.getElementById('alta-visita-res').value = '';
+                    document.getElementById('alta-visita-vendedor-fk').value = '';
+                    document.getElementById('alta-visita-empleado-fk').value = '';
+                } catch (e) {
+                    console.error("Error al registrar visita en Firestore:", e);
+                    showMessage(`Error al registrar visita: ${e.message}`, 'error');
+                }
+            });
+
+            // --- Menú Modificar ---
             document.getElementById('back-to-main-menu-from-modificar').addEventListener('click', () => showPage('main-menu'));
             document.getElementById('btn-modificar-empresa').addEventListener('click', () => showPage('modificar-empresa-page'));
-            // Add listeners for other Modificar forms
-            document.getElementById('btn-modificar-empleado').addEventListener('click', () => showMessage('Funcionalidad "Modificar Empleado" no implementada aún.').then(() => showPage('modificar-menu')));
-            document.getElementById('btn-modificar-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Modificar Vendedor" no implementada aún.').then(() => showPage('modificar-menu')));
-            document.getElementById('btn-modificar-cliente').addEventListener('click', () => showMessage('Funcionalidad "Modificar Cliente" no implementada aún.').then(() => showPage('modificar-menu')));
-            document.getElementById('btn-modificar-libro').addEventListener('click', () => showMessage('Funcionalidad "Modificar Libro" no implementada aún.').then(() => showPage('modificar-menu')));
-            document.getElementById('btn-modificar-visita').addEventListener('click', () => showMessage('Funcionalidad "Modificar Visita" no implementada aún.').then(() => showPage('modificar-menu')));
+            document.getElementById('btn-modificar-empleado').addEventListener('click', () => showPage('modificar-empleado-page'));
+            document.getElementById('btn-modificar-vendedor').addEventListener('click', () => showPage('modificar-vendedor-page'));
+            document.getElementById('btn-modificar-cliente').addEventListener('click', () => showPage('modificar-cliente-page'));
+            document.getElementById('btn-modificar-libro').addEventListener('click', () => showPage('modificar-libro-page'));
+            document.getElementById('btn-modificar-visita').addEventListener('click', () => showPage('modificar-visita-page'));
 
-            // Modificar Empresa Page Buttons
+            // --- MODIFICAR Funcionalidades ---
+            // Modificar Empresa
             document.getElementById('back-to-modificar-menu-from-empresa').addEventListener('click', () => showPage('modificar-menu'));
             document.getElementById('search-modificar-empresa').addEventListener('click', async () => {
                 const nombreSearch = document.getElementById('modificar-empresa-nombre-search').value;
-                if (!db) {
-                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
-                    return;
-                }
-                if (!userId) {
-                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
-                    return;
-                }
+                const direccionInput = document.getElementById('modificar-empresa-direccion');
+                const telefonoInput = document.getElementById('modificar-empresa-telefono');
+                const modifyButton = document.getElementById('modify-empresa-button');
 
-                if (nombreSearch) {
-                    try {
-                        const collectionPath = `artifacts/${appId}/public/data/empresas`;
-                        const q = query(collection(db, collectionPath), where("nombre", "==", nombreSearch));
-                        const querySnapshot = await getDocs(q);
+                direccionInput.disabled = true;
+                telefonoInput.disabled = true;
+                modifyButton.disabled = true;
 
-                        if (!querySnapshot.empty) {
-                            const docData = querySnapshot.docs[0].data();
-                            const docId = querySnapshot.docs[0].id;
-                            document.getElementById('modificar-empresa-direccion').value = docData.direccion;
-                            document.getElementById('modificar-empresa-telefono').value = docData.telefono;
-                            document.getElementById('modify-empresa-button').dataset.docId = docId; // Store doc ID for update
-                            showMessage(`Empresa "${nombreSearch}" encontrada.`, 'success');
-                            document.getElementById('modify-empresa-button').disabled = false;
-                        } else {
-                            showMessage('Empresa no encontrada.', 'error');
-                            document.getElementById('modificar-empresa-direccion').value = '';
-                            document.getElementById('modificar-empresa-telefono').value = '';
-                            document.getElementById('modify-empresa-button').dataset.docId = '';
-                            document.getElementById('modify-empresa-button').disabled = true;
-                        }
-                    } catch (e) {
-                        console.error("Error al buscar empresa en Firestore:", e);
-                        showMessage(`Error al buscar empresa: ${e.message}`, 'error');
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombreSearch) { showMessage('Por favor, ingrese el nombre de la empresa a buscar.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/empresas`;
+                    const q = query(collection(db, collectionPath), where("nombre", "==", nombreSearch));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        const docId = querySnapshot.docs[0].id;
+                        direccionInput.value = docData.direccion;
+                        telefonoInput.value = docData.telefono;
+                        modifyButton.dataset.docId = docId;
+                        direccionInput.disabled = false;
+                        telefonoInput.disabled = false;
+                        modifyButton.disabled = false;
+                        showMessage(`Empresa "${nombreSearch}" encontrada.`, 'success');
+                    } else {
+                        showMessage('Empresa no encontrada.', 'error');
+                        direccionInput.value = '';
+                        telefonoInput.value = '';
+                        modifyButton.dataset.docId = '';
                     }
-                } else {
-                    showMessage('Por favor, ingrese el nombre de la empresa a buscar.', 'error');
+                } catch (e) {
+                    console.error("Error al buscar empresa en Firestore:", e);
+                    showMessage(`Error al buscar empresa: ${e.message}`, 'error');
                 }
             });
             document.getElementById('modify-empresa-button').addEventListener('click', async () => {
                 const docId = document.getElementById('modify-empresa-button').dataset.docId;
-                const nombreSearch = document.getElementById('modificar-empresa-nombre-search').value;
+                const nombreSearch = document.getElementById('modificar-empresa-nombre-search').value; // Keep original name for search query
                 const direccion = document.getElementById('modificar-empresa-direccion').value;
                 const telefono = document.getElementById('modificar-empresa-telefono').value;
 
-                if (!db) {
-                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
-                    return;
-                }
-                if (!userId) {
-                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
-                    return;
-                }
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docId || !nombreSearch || !direccion || !telefono) { showMessage('Por favor, busque una empresa y complete todos los campos.', 'error'); return; }
 
-                if (docId && nombreSearch && direccion && telefono) {
-                    try {
-                        const docRef = doc(db, `artifacts/${appId}/public/data/empresas`, docId);
-                        await updateDoc(docRef, {
-                            nombre: nombreSearch, // Update name as well if it was changed
-                            direccion: direccion,
-                            telefono: telefono
-                        });
-                        await showMessage('Empresa modificada exitosamente en Firestore!', 'success');
-                        // Clear fields
-                        document.getElementById('modificar-empresa-nombre-search').value = '';
-                        document.getElementById('modificar-empresa-direccion').value = '';
-                        document.getElementById('modificar-empresa-telefono').value = '';
-                        document.getElementById('modify-empresa-button').dataset.docId = '';
-                        document.getElementById('modify-empresa-button').disabled = true;
-                    } catch (e) {
-                        console.error("Error al modificar empresa en Firestore:", e);
-                        showMessage(`Error al modificar empresa: ${e.message}`, 'error');
-                    }
-                } else {
-                    showMessage('Por favor, busque una empresa y complete todos los campos.', 'error');
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/empresas`, docId);
+                    await updateDoc(docRef, {
+                        nombre: nombreSearch, // Update name as well if it was changed or needed for consistency
+                        direccion: direccion,
+                        telefono: telefono
+                    });
+                    await showMessage('Empresa modificada exitosamente en Firestore!', 'success');
+                    document.getElementById('modificar-empresa-nombre-search').value = '';
+                    document.getElementById('modificar-empresa-direccion').value = '';
+                    document.getElementById('modificar-empresa-telefono').value = '';
+                    document.getElementById('modificar-empresa-direccion').disabled = true;
+                    document.getElementById('modificar-empresa-telefono').disabled = true;
+                    document.getElementById('modify-empresa-button').dataset.docId = '';
+                    document.getElementById('modify-empresa-button').disabled = true;
+                } catch (e) {
+                    console.error("Error al modificar empresa en Firestore:", e);
+                    showMessage(`Error al modificar empresa: ${e.message}`, 'error');
                 }
             });
 
-            // Consulta Menu Buttons
+            // Modificar Empleado
+            document.getElementById('back-to-modificar-menu-from-empleado').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('search-modificar-empleado').addEventListener('click', async () => {
+                const noEmpleadoSearch = parseInt(document.getElementById('modificar-empleado-no-search').value);
+                const nomInput = document.getElementById('modificar-empleado-nom');
+                const legajoInput = document.getElementById('modificar-empleado-legajo');
+                const dirInput = document.getElementById('modificar-empleado-dir');
+                const telInput = document.getElementById('modificar-empleado-tel');
+                const empresaInput = document.getElementById('modificar-empleado-empresa');
+                const correoInput = document.getElementById('modificar-empleado-correo');
+                const edadInput = document.getElementById('modificar-empleado-edad');
+                const modifyButton = document.getElementById('modify-empleado-button');
+
+                [nomInput, legajoInput, dirInput, telInput, empresaInput, correoInput, edadInput, modifyButton].forEach(el => el.disabled = true);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(noEmpleadoSearch)) { showMessage('Por favor, ingrese un número de empleado válido.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/empleados`, noEmpleadoSearch.toString());
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const docData = docSnap.data();
+                        nomInput.value = docData.nomEmpleado;
+                        legajoInput.value = docData.legajo;
+                        dirInput.value = docData.dirEmpleado;
+                        telInput.value = docData.telEmpleado;
+                        empresaInput.value = docData.empresaEmpleado;
+                        correoInput.value = docData.correoEmpleado;
+                        edadInput.value = docData.edad;
+                        modifyButton.dataset.docId = docSnap.id;
+                        [nomInput, legajoInput, dirInput, telInput, empresaInput, correoInput, edadInput, modifyButton].forEach(el => el.disabled = false);
+                        showMessage(`Empleado "${docData.nomEmpleado}" encontrado.`, 'success');
+                    } else {
+                        showMessage('Empleado no encontrado.', 'error');
+                        [nomInput, legajoInput, dirInput, telInput, empresaInput, correoInput, edadInput].forEach(el => el.value = '');
+                        modifyButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar empleado en Firestore:", e);
+                    showMessage(`Error al buscar empleado: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('modify-empleado-button').addEventListener('click', async () => {
+                const docId = document.getElementById('modify-empleado-button').dataset.docId;
+                const nomEmpleado = document.getElementById('modificar-empleado-nom').value;
+                const legajo = document.getElementById('modificar-empleado-legajo').value;
+                const dirEmpleado = document.getElementById('modificar-empleado-dir').value;
+                const telEmpleado = document.getElementById('modificar-empleado-tel').value;
+                const empresaEmpleado = document.getElementById('modificar-empleado-empresa').value;
+                const correoEmpleado = document.getElementById('modificar-empleado-correo').value;
+                const edad = parseInt(document.getElementById('modificar-empleado-edad').value);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docId || !nomEmpleado || !legajo || !dirEmpleado || !telEmpleado || !empresaEmpleado || !correoEmpleado || isNaN(edad)) { showMessage('Por favor, busque un empleado y complete todos los campos.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/empleados`, docId);
+                    await updateDoc(docRef, {
+                        nomEmpleado: nomEmpleado,
+                        legajo: legajo,
+                        dirEmpleado: dirEmpleado,
+                        telEmpleado: telEmpleado,
+                        empresaEmpleado: empresaEmpleado,
+                        correoEmpleado: correoEmpleado,
+                        edad: edad
+                    });
+                    await showMessage('Empleado modificado exitosamente en Firestore!', 'success');
+                    document.getElementById('modificar-empleado-no-search').value = '';
+                    document.getElementById('modificar-empleado-nom').value = '';
+                    document.getElementById('modificar-empleado-legajo').value = '';
+                    document.getElementById('modificar-empleado-dir').value = '';
+                    document.getElementById('modificar-empleado-tel').value = '';
+                    document.getElementById('modificar-empleado-empresa').value = '';
+                    document.getElementById('modificar-empleado-correo').value = '';
+                    document.getElementById('modificar-empleado-edad').value = '';
+                    document.getElementById('modificar-empleado-nom').disabled = true; // Disable fields again
+                    document.getElementById('modify-empleado-button').disabled = true;
+                } catch (e) {
+                    console.error("Error al modificar empleado en Firestore:", e);
+                    showMessage(`Error al modificar empleado: ${e.message}`, 'error');
+                }
+            });
+
+            // Modificar Vendedor
+            document.getElementById('back-to-modificar-menu-from-vendedor').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('search-modificar-vendedor').addEventListener('click', async () => {
+                const idVendedorSearch = parseInt(document.getElementById('modificar-vendedor-id-search').value);
+                const nombreInput = document.getElementById('modificar-vendedor-nombre');
+                const telInput = document.getElementById('modificar-vendedor-tel');
+                const modifyButton = document.getElementById('modify-vendedor-button');
+
+                [nombreInput, telInput, modifyButton].forEach(el => el.disabled = true);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idVendedorSearch)) { showMessage('Por favor, ingrese un ID de vendedor válido.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/vendedores`, idVendedorSearch.toString());
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const docData = docSnap.data();
+                        nombreInput.value = docData.nombreVendedor;
+                        telInput.value = docData.telVendedor;
+                        modifyButton.dataset.docId = docSnap.id;
+                        [nombreInput, telInput, modifyButton].forEach(el => el.disabled = false);
+                        showMessage(`Vendedor "${docData.nombreVendedor}" encontrado.`, 'success');
+                    } else {
+                        showMessage('Vendedor no encontrado.', 'error');
+                        [nombreInput, telInput].forEach(el => el.value = '');
+                        modifyButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar vendedor en Firestore:", e);
+                    showMessage(`Error al buscar vendedor: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('modify-vendedor-button').addEventListener('click', async () => {
+                const docId = document.getElementById('modify-vendedor-button').dataset.docId;
+                const nombreVendedor = document.getElementById('modificar-vendedor-nombre').value;
+                const telVendedor = document.getElementById('modificar-vendedor-tel').value;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docId || !nombreVendedor || !telVendedor) { showMessage('Por favor, busque un vendedor y complete todos los campos.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/vendedores`, docId);
+                    await updateDoc(docRef, {
+                        nombreVendedor: nombreVendedor,
+                        telVendedor: telVendedor
+                    });
+                    await showMessage('Vendedor modificado exitosamente en Firestore!', 'success');
+                    document.getElementById('modificar-vendedor-id-search').value = '';
+                    document.getElementById('modificar-vendedor-nombre').value = '';
+                    document.getElementById('modificar-vendedor-tel').value = '';
+                    document.getElementById('modificar-vendedor-nombre').disabled = true;
+                    document.getElementById('modificar-vendedor-tel').disabled = true;
+                    document.getElementById('modify-vendedor-button').disabled = true;
+                    document.getElementById('modify-vendedor-button').dataset.docId = '';
+                } catch (e) {
+                    console.error("Error al modificar vendedor en Firestore:", e);
+                    showMessage(`Error al modificar vendedor: ${e.message}`, 'error');
+                }
+            });
+
+            // Modificar Cliente
+            document.getElementById('back-to-modificar-menu-from-cliente').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('search-modificar-cliente').addEventListener('click', async () => {
+                const idClienteSearch = parseInt(document.getElementById('modificar-cliente-id-search').value);
+                const nombreInput = document.getElementById('modificar-cliente-nombre');
+                const dirInput = document.getElementById('modificar-cliente-direccion');
+                const telInput = document.getElementById('modificar-cliente-telefono');
+                const correoInput = document.getElementById('modificar-cliente-correo');
+                const modifyButton = document.getElementById('modify-cliente-button');
+
+                [nombreInput, dirInput, telInput, correoInput, modifyButton].forEach(el => el.disabled = true);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idClienteSearch)) { showMessage('Por favor, ingrese un ID de cliente válido.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/clientes`, idClienteSearch.toString());
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const docData = docSnap.data();
+                        nombreInput.value = docData.nombreCliente;
+                        dirInput.value = docData.direccion;
+                        telInput.value = docData.telefono;
+                        correoInput.value = docData.correo;
+                        modifyButton.dataset.docId = docSnap.id;
+                        [nombreInput, dirInput, telInput, correoInput, modifyButton].forEach(el => el.disabled = false);
+                        showMessage(`Cliente "${docData.nombreCliente}" encontrado.`, 'success');
+                    } else {
+                        showMessage('Cliente no encontrado.', 'error');
+                        [nombreInput, dirInput, telInput, correoInput].forEach(el => el.value = '');
+                        modifyButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar cliente en Firestore:", e);
+                    showMessage(`Error al buscar cliente: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('modify-cliente-button').addEventListener('click', async () => {
+                const docId = document.getElementById('modify-cliente-button').dataset.docId;
+                const nombreCliente = document.getElementById('modificar-cliente-nombre').value;
+                const direccion = document.getElementById('modificar-cliente-direccion').value;
+                const telefono = document.getElementById('modificar-cliente-telefono').value;
+                const correo = document.getElementById('modificar-cliente-correo').value;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docId || !nombreCliente || !direccion || !telefono || !correo) { showMessage('Por favor, busque un cliente y complete todos los campos.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/clientes`, docId);
+                    await updateDoc(docRef, {
+                        nombreCliente: nombreCliente,
+                        direccion: direccion,
+                        telefono: telefono,
+                        correo: correo
+                    });
+                    await showMessage('Cliente modificado exitosamente en Firestore!', 'success');
+                    document.getElementById('modificar-cliente-id-search').value = '';
+                    document.getElementById('modificar-cliente-nombre').value = '';
+                    document.getElementById('modificar-cliente-direccion').value = '';
+                    document.getElementById('modificar-cliente-telefono').value = '';
+                    document.getElementById('modificar-cliente-correo').value = '';
+                    document.getElementById('modificar-cliente-nombre').disabled = true;
+                    document.getElementById('modify-cliente-button').disabled = true;
+                    document.getElementById('modify-cliente-button').dataset.docId = '';
+                } catch (e) {
+                    console.error("Error al modificar cliente en Firestore:", e);
+                    showMessage(`Error al modificar cliente: ${e.message}`, 'error');
+                }
+            });
+
+            // Modificar Libro
+            document.getElementById('back-to-modificar-menu-from-libro').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('search-modificar-libro').addEventListener('click', async () => {
+                const tituloSearch = document.getElementById('modificar-libro-titulo-search').value;
+                const autorInput = document.getElementById('modificar-libro-autor');
+                const editorialInput = document.getElementById('modificar-libro-editorial');
+                const generoInput = document.getElementById('modificar-libro-genero');
+                const modifyButton = document.getElementById('modify-libro-button');
+
+                [autorInput, editorialInput, generoInput, modifyButton].forEach(el => el.disabled = true);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!tituloSearch) { showMessage('Por favor, ingrese el título del libro a buscar.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/libros`;
+                    const q = query(collection(db, collectionPath), where("titulo", "==", tituloSearch));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        const docId = querySnapshot.docs[0].id;
+                        autorInput.value = docData.autor;
+                        editorialInput.value = docData.editorial;
+                        generoInput.value = docData.genero;
+                        modifyButton.dataset.docId = docId;
+                        [autorInput, editorialInput, generoInput, modifyButton].forEach(el => el.disabled = false);
+                        showMessage(`Libro "${tituloSearch}" encontrado.`, 'success');
+                    } else {
+                        showMessage('Libro no encontrado.', 'error');
+                        [autorInput, editorialInput, generoInput].forEach(el => el.value = '');
+                        modifyButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar libro en Firestore:", e);
+                    showMessage(`Error al buscar libro: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('modify-libro-button').addEventListener('click', async () => {
+                const docId = document.getElementById('modify-libro-button').dataset.docId;
+                const titulo = document.getElementById('modificar-libro-titulo-search').value; // Keep original title for search
+                const autor = document.getElementById('modificar-libro-autor').value;
+                const editorial = document.getElementById('modificar-libro-editorial').value;
+                const genero = document.getElementById('modificar-libro-genero').value;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docId || !titulo || !autor || !editorial || !genero) { showMessage('Por favor, busque un libro y complete todos los campos.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/libros`, docId);
+                    await updateDoc(docRef, {
+                        titulo: titulo,
+                        autor: autor,
+                        editorial: editorial,
+                        genero: genero
+                    });
+                    await showMessage('Libro modificado exitosamente en Firestore!', 'success');
+                    document.getElementById('modificar-libro-titulo-search').value = '';
+                    document.getElementById('modificar-libro-autor').value = '';
+                    document.getElementById('modificar-libro-editorial').value = '';
+                    document.getElementById('modificar-libro-genero').value = '';
+                    document.getElementById('modificar-libro-autor').disabled = true;
+                    document.getElementById('modify-libro-button').disabled = true;
+                    document.getElementById('modify-libro-button').dataset.docId = '';
+                } catch (e) {
+                    console.error("Error al modificar libro en Firestore:", e);
+                    showMessage(`Error al modificar libro: ${e.message}`, 'error');
+                }
+            });
+
+            // Modificar Visita
+            document.getElementById('back-to-modificar-menu-from-visita').addEventListener('click', () => showPage('modificar-menu'));
+            document.getElementById('search-modificar-visita').addEventListener('click', async () => {
+                const idVisitaSearch = parseInt(document.getElementById('modificar-visita-id-search').value);
+                const fechaInput = document.getElementById('modificar-visita-fecha');
+                const horaInput = document.getElementById('modificar-visita-hora');
+                const resInput = document.getElementById('modificar-visita-res');
+                const vendedorFkInput = document.getElementById('modificar-visita-vendedor-fk');
+                const empleadoFkInput = document.getElementById('modificar-visita-empleado-fk');
+                const modifyButton = document.getElementById('modify-visita-button');
+
+                [fechaInput, horaInput, resInput, vendedorFkInput, empleadoFkInput, modifyButton].forEach(el => el.disabled = true);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(idVisitaSearch)) { showMessage('Por favor, ingrese un ID de visita válido.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/visitas`, idVisitaSearch.toString());
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const docData = docSnap.data();
+                        fechaInput.value = docData.fechaVisita;
+                        horaInput.value = docData.horaVisita;
+                        resInput.value = docData.resVisita;
+                        vendedorFkInput.value = docData.idVendedorFk;
+                        empleadoFkInput.value = docData.noEmpleadoFk;
+                        modifyButton.dataset.docId = docSnap.id;
+                        [fechaInput, horaInput, resInput, vendedorFkInput, empleadoFkInput, modifyButton].forEach(el => el.disabled = false);
+                        showMessage(`Visita ${idVisitaSearch} encontrada.`, 'success');
+                    } else {
+                        showMessage('Visita no encontrada.', 'error');
+                        [fechaInput, horaInput, resInput, vendedorFkInput, empleadoFkInput].forEach(el => el.value = '');
+                        modifyButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar visita en Firestore:", e);
+                    showMessage(`Error al buscar visita: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('modify-visita-button').addEventListener('click', async () => {
+                const docId = document.getElementById('modify-visita-button').dataset.docId;
+                const fechaVisita = document.getElementById('modificar-visita-fecha').value;
+                const horaVisita = document.getElementById('modificar-visita-hora').value;
+                const resVisita = document.getElementById('modificar-visita-res').value;
+                const idVendedorFk = parseInt(document.getElementById('modificar-visita-vendedor-fk').value);
+                const noEmpleadoFk = parseInt(document.getElementById('modificar-visita-empleado-fk').value);
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docId || !fechaVisita || !horaVisita || !resVisita || isNaN(idVendedorFk) || isNaN(noEmpleadoFk)) { showMessage('Por favor, busque una visita y complete todos los campos.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/visitas`, docId);
+                    await updateDoc(docRef, {
+                        fechaVisita: fechaVisita,
+                        horaVisita: horaVisita,
+                        resVisita: resVisita,
+                        idVendedorFk: idVendedorFk,
+                        noEmpleadoFk: noEmpleadoFk
+                    });
+                    await showMessage('Visita modificada exitosamente en Firestore!', 'success');
+                    document.getElementById('modificar-visita-id-search').value = '';
+                    document.getElementById('modificar-visita-fecha').value = '';
+                    document.getElementById('modificar-visita-hora').value = '';
+                    document.getElementById('modificar-visita-res').value = '';
+                    document.getElementById('modificar-visita-vendedor-fk').value = '';
+                    document.getElementById('modificar-visita-empleado-fk').value = '';
+                    document.getElementById('modificar-visita-fecha').disabled = true;
+                    document.getElementById('modify-visita-button').disabled = true;
+                    document.getElementById('modify-visita-button').dataset.docId = '';
+                } catch (e) {
+                    console.error("Error al modificar visita en Firestore:", e);
+                    showMessage(`Error al modificar visita: ${e.message}`, 'error');
+                }
+            });
+
+            // --- Menú Consulta ---
             document.getElementById('back-to-main-menu-from-consulta').addEventListener('click', () => showPage('main-menu'));
             document.getElementById('btn-consulta-empresa').addEventListener('click', () => showPage('consulta-empresa-page'));
-            // Add listeners for other Consulta forms
-            document.getElementById('btn-consulta-empleado').addEventListener('click', () => showMessage('Funcionalidad "Consulta Empleado" no implementada aún.').then(() => showPage('consulta-menu')));
-            document.getElementById('btn-consulta-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Consulta Vendedor" no implementada aún.').then(() => showPage('consulta-menu')));
-            document.getElementById('btn-consulta-cliente').addEventListener('click', () => showMessage('Funcionalidad "Consulta Cliente" no implementada aún.').then(() => showPage('consulta-menu')));
-            document.getElementById('btn-consulta-libro').addEventListener('click', () => showMessage('Funcionalidad "Consulta Libro" no implementada aún.').then(() => showPage('consulta-menu')));
-            document.getElementById('btn-consulta-visita').addEventListener('click', () => showMessage('Funcionalidad "Consulta Visita" no implementada aún.').then(() => showPage('consulta-menu')));
+            document.getElementById('btn-consulta-empleado').addEventListener('click', () => showPage('consulta-empleado-page'));
+            document.getElementById('btn-consulta-vendedor').addEventListener('click', () => showPage('consulta-vendedor-page'));
+            document.getElementById('btn-consulta-cliente').addEventListener('click', () => showPage('consulta-cliente-page'));
+            document.getElementById('btn-consulta-libro').addEventListener('click', () => showPage('consulta-libro-page'));
+            document.getElementById('btn-consulta-visita').addEventListener('click', () => showPage('consulta-visita-page'));
 
-
-            // Consulta Empresa Page Buttons
+            // --- CONSULTA Funcionalidades ---
+            // Consulta Empresa (Logic already present, just added clear)
             document.getElementById('back-to-consulta-menu-from-empresa').addEventListener('click', () => showPage('consulta-menu'));
             document.getElementById('search-consulta-empresa').addEventListener('click', async () => {
                 const nombre = document.getElementById('consulta-empresa-nombre').value;
                 const resultsDiv = document.getElementById('consulta-empresa-results');
-                resultsDiv.innerHTML = `<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>`; // Clear previous results
+                resultsDiv.innerHTML = `<p class="text-gray-700">Buscando...</p>`;
 
-                if (!db) {
-                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
-                    return;
-                }
-                if (!userId) {
-                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
-                    return;
-                }
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombre) { showMessage('Por favor, ingrese el nombre de la empresa a consultar.', 'error'); return; }
 
-                if (nombre) {
-                    try {
-                        const collectionPath = `artifacts/${appId}/public/data/empresas`;
-                        const q = query(collection(db, collectionPath), where("nombre", "==", nombre));
-                        const querySnapshot = await getDocs(q);
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/empresas`;
+                    const q = query(collection(db, collectionPath), where("nombre", "==", nombre));
+                    const querySnapshot = await getDocs(q);
 
-                        if (!querySnapshot.empty) {
-                            const docData = querySnapshot.docs[0].data();
-                            resultsDiv.innerHTML = `
-                                <p class="font-bold text-lg mb-2">Resultados para "${nombre}":</p>
-                                <p><strong>Nombre:</strong> ${docData.nombre}</p>
-                                <p><strong>Dirección:</strong> ${docData.direccion}</p>
-                                <p><strong>Teléfono:</strong> ${docData.telefono}</p>
-                                <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
-                            `;
-                            showMessage(`Empresa "${nombre}" encontrada.`, 'success');
-                        } else {
-                            resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ninguna empresa con el nombre "${nombre}".</p>`;
-                            showMessage('Empresa no encontrada.', 'error');
-                        }
-                    } catch (e) {
-                        console.error("Error al consultar empresa en Firestore:", e);
-                        showMessage(`Error al consultar empresa: ${e.message}`, 'error');
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        resultsDiv.innerHTML = `
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Nombre:</td><td>${docData.nombre}</td></tr>
+                                    <tr><td>Dirección:</td><td>${docData.direccion}</td></tr>
+                                    <tr><td>Teléfono:</td><td>${docData.telefono}</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                        `;
+                        showMessage(`Empresa "${nombre}" encontrada.`, 'success');
+                    } else {
+                        resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ninguna empresa con el nombre "${nombre}".</p>`;
+                        showMessage('Empresa no encontrada.', 'error');
                     }
-                } else {
-                    showMessage('Por favor, ingrese el nombre de la empresa a consultar.', 'error');
+                } catch (e) {
+                    console.error("Error al consultar empresa en Firestore:", e);
+                    showMessage(`Error al consultar empresa: ${e.message}`, 'error');
                 }
             });
             document.getElementById('clear-consulta-empresa').addEventListener('click', () => {
@@ -866,106 +1967,634 @@
                 document.getElementById('consulta-empresa-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
             });
 
-            // Baja Menu Buttons
+            // Consulta Empleado
+            document.getElementById('back-to-consulta-menu-from-empleado').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('search-consulta-empleado').addEventListener('click', async () => {
+                const nombre = document.getElementById('consulta-empleado-nombre').value;
+                const resultsDiv = document.getElementById('consulta-empleado-results');
+                resultsDiv.innerHTML = `<p class="text-gray-700">Buscando...</p>`;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombre) { showMessage('Por favor, ingrese el nombre del empleado a consultar.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/empleados`;
+                    const q = query(collection(db, collectionPath), where("nomEmpleado", "==", nombre));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        resultsDiv.innerHTML = `
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Número Empleado:</td><td>${docData.noEmpleado}</td></tr>
+                                    <tr><td>Nombre:</td><td>${docData.nomEmpleado}</td></tr>
+                                    <tr><td>Legajo:</td><td>${docData.legajo}</td></tr>
+                                    <tr><td>Dirección:</td><td>${docData.dirEmpleado}</td></tr>
+                                    <tr><td>Teléfono:</td><td>${docData.telEmpleado}</td></tr>
+                                    <tr><td>Empresa:</td><td>${docData.empresaEmpleado}</td></tr>
+                                    <tr><td>Correo:</td><td>${docData.correoEmpleado}</td></tr>
+                                    <tr><td>Edad:</td><td>${docData.edad}</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                        `;
+                        showMessage(`Empleado "${nombre}" encontrado.`, 'success');
+                    } else {
+                        resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ningún empleado con el nombre "${nombre}".</p>`;
+                        showMessage('Empleado no encontrado.', 'error');
+                    }
+                } catch (e) {
+                    console.error("Error al consultar empleado en Firestore:", e);
+                    showMessage(`Error al consultar empleado: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('clear-consulta-empleado').addEventListener('click', () => {
+                document.getElementById('consulta-empleado-nombre').value = '';
+                document.getElementById('consulta-empleado-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+
+            // Consulta Vendedor
+            document.getElementById('back-to-consulta-menu-from-vendedor').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('search-consulta-vendedor').addEventListener('click', async () => {
+                const nombre = document.getElementById('consulta-vendedor-nombre').value;
+                const resultsDiv = document.getElementById('consulta-vendedor-results');
+                resultsDiv.innerHTML = `<p class="text-gray-700">Buscando...</p>`;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombre) { showMessage('Por favor, ingrese el nombre del vendedor a consultar.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/vendedores`;
+                    const q = query(collection(db, collectionPath), where("nombreVendedor", "==", nombre));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        resultsDiv.innerHTML = `
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>ID Vendedor:</td><td>${docData.idVendedor}</td></tr>
+                                    <tr><td>Nombre:</td><td>${docData.nombreVendedor}</td></tr>
+                                    <tr><td>Teléfono:</td><td>${docData.telVendedor}</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                        `;
+                        showMessage(`Vendedor "${nombre}" encontrado.`, 'success');
+                    } else {
+                        resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ningún vendedor con el nombre "${nombre}".</p>`;
+                        showMessage('Vendedor no encontrado.', 'error');
+                    }
+                } catch (e) {
+                    console.error("Error al consultar vendedor en Firestore:", e);
+                    showMessage(`Error al consultar vendedor: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('clear-consulta-vendedor').addEventListener('click', () => {
+                document.getElementById('consulta-vendedor-nombre').value = '';
+                document.getElementById('consulta-vendedor-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+
+            // Consulta Cliente
+            document.getElementById('back-to-consulta-menu-from-cliente').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('search-consulta-cliente').addEventListener('click', async () => {
+                const nombre = document.getElementById('consulta-cliente-nombre').value;
+                const resultsDiv = document.getElementById('consulta-cliente-results');
+                resultsDiv.innerHTML = `<p class="text-gray-700">Buscando...</p>`;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombre) { showMessage('Por favor, ingrese el nombre del cliente a consultar.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/clientes`;
+                    const q = query(collection(db, collectionPath), where("nombreCliente", "==", nombre));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        resultsDiv.innerHTML = `
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>ID Cliente:</td><td>${docData.idCliente}</td></tr>
+                                    <tr><td>Nombre:</td><td>${docData.nombreCliente}</td></tr>
+                                    <tr><td>Dirección:</td><td>${docData.direccion}</td></tr>
+                                    <tr><td>Teléfono:</td><td>${docData.telefono}</td></tr>
+                                    <tr><td>Correo:</td><td>${docData.correo}</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                        `;
+                        showMessage(`Cliente "${nombre}" encontrado.`, 'success');
+                    } else {
+                        resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ningún cliente con el nombre "${nombre}".</p>`;
+                        showMessage('Cliente no encontrado.', 'error');
+                    }
+                } catch (e) {
+                    console.error("Error al consultar cliente en Firestore:", e);
+                    showMessage(`Error al consultar cliente: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('clear-consulta-cliente').addEventListener('click', () => {
+                document.getElementById('consulta-cliente-nombre').value = '';
+                document.getElementById('consulta-cliente-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+
+            // Consulta Libro
+            document.getElementById('back-to-consulta-menu-from-libro').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('search-consulta-libro').addEventListener('click', async () => {
+                const titulo = document.getElementById('consulta-libro-titulo').value;
+                const resultsDiv = document.getElementById('consulta-libro-results');
+                resultsDiv.innerHTML = `<p class="text-gray-700">Buscando...</p>`;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!titulo) { showMessage('Por favor, ingrese el título del libro a consultar.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/libros`;
+                    const q = query(collection(db, collectionPath), where("titulo", "==", titulo));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        const docData = querySnapshot.docs[0].data();
+                        resultsDiv.innerHTML = `
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>ID Libro:</td><td>${docData.idLibro}</td></tr>
+                                    <tr><td>Título:</td><td>${docData.titulo}</td></tr>
+                                    <tr><td>Autor:</td><td>${docData.autor}</td></tr>
+                                    <tr><td>Editorial:</td><td>${docData.editorial}</td></tr>
+                                    <tr><td>Género:</td><td>${docData.genero}</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                        `;
+                        showMessage(`Libro "${titulo}" encontrado.`, 'success');
+                    } else {
+                        resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ningún libro con el título "${titulo}".</p>`;
+                        showMessage('Libro no encontrado.', 'error');
+                    }
+                } catch (e) {
+                    console.error("Error al consultar libro en Firestore:", e);
+                    showMessage(`Error al consultar libro: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('clear-consulta-libro').addEventListener('click', () => {
+                document.getElementById('consulta-libro-titulo').value = '';
+                document.getElementById('consulta-libro-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+
+            // Consulta Visita
+            document.getElementById('back-to-consulta-menu-from-visita').addEventListener('click', () => showPage('consulta-menu'));
+            document.getElementById('search-consulta-visita').addEventListener('click', async () => {
+                const numeroVisita = parseInt(document.getElementById('consulta-visita-numero').value);
+                const resultsDiv = document.getElementById('consulta-visita-results');
+                resultsDiv.innerHTML = `<p class="text-gray-700">Buscando...</p>`;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (isNaN(numeroVisita)) { showMessage('Por favor, ingrese un número de visita válido.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/visitas`, numeroVisita.toString());
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const docData = docSnap.data();
+                        resultsDiv.innerHTML = `
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>ID Visita:</td><td>${docData.idVisita}</td></tr>
+                                    <tr><td>Fecha:</td><td>${docData.fechaVisita}</td></tr>
+                                    <tr><td>Hora:</td><td>${docData.horaVisita}</td></tr>
+                                    <tr><td>Resultado:</td><td>${docData.resVisita}</td></tr>
+                                    <tr><td>ID Vendedor (FK):</td><td>${docData.idVendedorFk}</td></tr>
+                                    <tr><td>No. Empleado (FK):</td><td>${docData.noEmpleadoFk}</td></tr>
+                                </tbody>
+                            </table>
+                            <p class="text-gray-600 mt-4"> (Datos de Firestore)</p>
+                        `;
+                        showMessage(`Visita ${numeroVisita} encontrada.`, 'success');
+                    } else {
+                        resultsDiv.innerHTML = `<p class="text-gray-700">No se encontró ninguna visita con el número "${numeroVisita}".</p>`;
+                        showMessage('Visita no encontrada.', 'error');
+                    }
+                } catch (e) {
+                    console.error("Error al consultar visita en Firestore:", e);
+                    showMessage(`Error al consultar visita: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('clear-consulta-visita').addEventListener('click', () => {
+                document.getElementById('consulta-visita-numero').value = '';
+                document.getElementById('consulta-visita-results').innerHTML = '<p class="text-gray-700">Resultados de la consulta aparecerán aquí.</p>';
+            });
+
+            // --- Menú Baja ---
             document.getElementById('back-to-main-menu-from-baja').addEventListener('click', () => showPage('main-menu'));
+            document.getElementById('btn-baja-empresa').addEventListener('click', () => showPage('baja-empresa-page'));
+            document.getElementById('btn-baja-empleado').addEventListener('click', () => showPage('baja-empleado-page'));
+            document.getElementById('btn-baja-vendedor').addEventListener('click', () => showPage('baja-vendedor-page'));
             document.getElementById('btn-baja-cliente').addEventListener('click', () => showPage('baja-cliente-page'));
-            // Add listeners for other Baja forms
-            document.getElementById('btn-baja-empresa').addEventListener('click', () => showMessage('Funcionalidad "Baja Empresa" no implementada aún.').then(() => showPage('baja-menu')));
-            document.getElementById('btn-baja-empleado').addEventListener('click', () => showMessage('Funcionalidad "Baja Empleado" no implementada aún.').then(() => showPage('baja-menu')));
-            document.getElementById('btn-baja-vendedor').addEventListener('click', () => showMessage('Funcionalidad "Baja Vendedor" no implementada aún.').then(() => showPage('baja-menu')));
-            document.getElementById('btn-baja-libro').addEventListener('click', () => showMessage('Funcionalidad "Baja Libro" no implementada aún.').then(() => showPage('baja-menu')));
-            document.getElementById('btn-baja-visita').addEventListener('click', () => showMessage('Funcionalidad "Baja Visita" no implementada aún.').then(() => showPage('baja-menu')));
+            document.getElementById('btn-baja-libro').addEventListener('click', () => showPage('baja-libro-page'));
+            document.getElementById('btn-baja-visita').addEventListener('click', () => showPage('baja-visita-page'));
 
+            // --- BAJA Funcionalidades ---
+            // Baja Empresa
+            document.getElementById('back-to-baja-menu-from-empresa').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('search-baja-empresa').addEventListener('click', async () => {
+                const nombre = document.getElementById('baja-empresa-nombre').value;
+                const deleteButton = document.getElementById('delete-baja-empresa');
+                deleteButton.disabled = true;
 
-            // Baja Cliente Page Buttons
-            document.getElementById('back-to-baja-menu-from-cliente').addEventListener('click', () => showPage('baja-menu'));
-            // Placeholder for search-baja-cliente and delete-baja-cliente
-            document.getElementById('search-baja-cliente').addEventListener('click', async () => {
-                const numero = document.getElementById('baja-cliente-numero').value;
-                const nombre = document.getElementById('baja-cliente-nombre').value;
-                const correo = document.getElementById('baja-cliente-correo').value;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!nombre) { showMessage('Por favor, ingrese el nombre de la empresa a buscar.', 'error'); return; }
 
-                if (!db) {
-                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
-                    return;
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/empresas`;
+                    const q = query(collection(db, collectionPath), where("nombre", "==", nombre));
+                    const querySnapshot = await getDocs(q);
+
+                    if (!querySnapshot.empty) {
+                        deleteButton.dataset.docId = querySnapshot.docs[0].id;
+                        deleteButton.disabled = false;
+                        showMessage(`Empresa "${nombre}" encontrada. Puede proceder a eliminarla.`, 'success');
+                    } else {
+                        showMessage('Empresa no encontrada.', 'error');
+                        deleteButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar empresa para eliminar en Firestore:", e);
+                    showMessage(`Error al buscar empresa: ${e.message}`, 'error');
                 }
-                if (!userId) {
-                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
-                    return;
-                }
+            });
+            document.getElementById('delete-baja-empresa').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-empresa').dataset.docId;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docIdToDelete) { showMessage('Primero busque una empresa para eliminar.', 'error'); return; }
 
-                if (numero || nombre || correo) {
+                const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro de empresa?`);
+                if (confirmed) {
                     try {
-                        const collectionPath = `artifacts/${appId}/public/data/empleados`; // Assuming clientes are stored as empleados for this example
-                        let q;
-                        if (numero) {
-                            q = query(collection(db, collectionPath), where("NO_EMPLEADO_PK", "==", parseInt(numero)));
-                        } else if (nombre) {
-                            q = query(collection(db, collectionPath), where("NOM_EMPLEADO", "==", nombre));
-                        } else if (correo) {
-                            q = query(collection(db, collectionPath), where("CORREO_EMPLEADO", "==", correo));
-                        } else {
-                            showMessage('Por favor, ingrese al menos un campo para buscar al cliente.', 'error');
-                            return;
-                        }
-
-                        const querySnapshot = await getDocs(q);
-
-                        if (!querySnapshot.empty) {
-                            const docData = querySnapshot.docs[0].data();
-                            const docId = querySnapshot.docs[0].id;
-                            // For simplicity, just display that it's found
-                            showMessage(`Cliente/Empleado "${docData.NOM_EMPLEADO}" encontrado. Puede proceder a eliminarlo.`, 'success');
-                            document.getElementById('delete-baja-cliente').dataset.docId = docId; // Store doc ID for deletion
-                            document.getElementById('delete-baja-cliente').disabled = false;
-                        } else {
-                            showMessage('Cliente/Empleado no encontrado.', 'error');
-                            document.getElementById('delete-baja-cliente').dataset.docId = '';
-                            document.getElementById('delete-baja-cliente').disabled = true;
-                        }
+                        const docRef = doc(db, `artifacts/${appId}/public/data/empresas`, docIdToDelete);
+                        await deleteDoc(docRef);
+                        await showMessage('Empresa eliminada exitosamente de Firestore!', 'success');
+                        document.getElementById('baja-empresa-nombre').value = '';
+                        document.getElementById('delete-baja-empresa').dataset.docId = '';
+                        document.getElementById('delete-baja-empresa').disabled = true;
                     } catch (e) {
-                        console.error("Error al buscar cliente/empleado en Firestore:", e);
-                        showMessage(`Error al buscar cliente/empleado: ${e.message}`, 'error');
+                        console.error("Error al eliminar empresa de Firestore:", e);
+                        showMessage(`Error al eliminar empresa: ${e.message}`, 'error');
                     }
                 } else {
-                    showMessage('Por favor, ingrese al menos un campo para buscar al cliente.', 'error');
+                    showMessage('Eliminación cancelada.', 'info');
                 }
             });
 
-            document.getElementById('delete-baja-cliente').addEventListener('click', async () => {
-                const docIdToDelete = document.getElementById('delete-baja-cliente').dataset.docId;
+            // Baja Empleado
+            document.getElementById('back-to-baja-menu-from-empleado').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('search-baja-empleado').addEventListener('click', async () => {
+                const noEmpleado = document.getElementById('baja-empleado-no').value;
+                const nomEmpleado = document.getElementById('baja-empleado-nom').value;
+                const correoEmpleado = document.getElementById('baja-empleado-correo').value;
+                const deleteButton = document.getElementById('delete-baja-empleado');
+                deleteButton.disabled = true;
 
-                if (!db) {
-                    showMessage('Base de datos no inicializada. Inténtelo de nuevo más tarde.', 'error');
-                    return;
-                }
-                if (!userId) {
-                    showMessage('No hay usuario autenticado. Por favor, inicie sesión.', 'error');
-                    return;
-                }
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!noEmpleado && !nomEmpleado && !correoEmpleado) { showMessage('Por favor, ingrese al menos un campo para buscar al empleado.', 'error'); return; }
 
-                if (docIdToDelete) {
-                    const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro?`);
-                    if (confirmed) {
-                        try {
-                            const docRef = doc(db, `artifacts/${appId}/public/data/empleados`, docIdToDelete); // Adjust collection if needed
-                            await deleteDoc(docRef);
-                            await showMessage('Registro eliminado exitosamente de Firestore!', 'success');
-                            // Clear form after deletion
-                            document.getElementById('baja-cliente-numero').value = '';
-                            document.getElementById('baja-cliente-nombre').value = '';
-                            document.getElementById('baja-cliente-correo').value = '';
-                            document.getElementById('delete-baja-cliente').dataset.docId = '';
-                            document.getElementById('delete-baja-cliente').disabled = true;
-                        } catch (e) {
-                            console.error("Error al eliminar registro de Firestore:", e);
-                            showMessage(`Error al eliminar registro: ${e.message}`, 'error');
-                        }
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/empleados`;
+                    let q;
+                    let foundDocId = '';
+                    if (noEmpleado) {
+                        q = query(collection(db, collectionPath), where("noEmpleado", "==", parseInt(noEmpleado)));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (nomEmpleado) {
+                        q = query(collection(db, collectionPath), where("nomEmpleado", "==", nomEmpleado));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (correoEmpleado) {
+                        q = query(collection(db, collectionPath), where("correoEmpleado", "==", correoEmpleado));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    }
+
+                    if (foundDocId) {
+                        deleteButton.dataset.docId = foundDocId;
+                        deleteButton.disabled = false;
+                        showMessage('Empleado encontrado. Puede proceder a eliminarlo.', 'success');
                     } else {
-                        showMessage('Eliminación cancelada.', 'info');
+                        showMessage('Empleado no encontrado.', 'error');
+                        deleteButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar empleado para eliminar en Firestore:", e);
+                    showMessage(`Error al buscar empleado: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('delete-baja-empleado').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-empleado').dataset.docId;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docIdToDelete) { showMessage('Primero busque un empleado para eliminar.', 'error'); return; }
+
+                const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro de empleado?`);
+                if (confirmed) {
+                    try {
+                        const docRef = doc(db, `artifacts/${appId}/public/data/empleados`, docIdToDelete);
+                        await deleteDoc(docRef);
+                        await showMessage('Empleado eliminado exitosamente de Firestore!', 'success');
+                        document.getElementById('baja-empleado-no').value = '';
+                        document.getElementById('baja-empleado-nom').value = '';
+                        document.getElementById('baja-empleado-correo').value = '';
+                        document.getElementById('delete-baja-empleado').dataset.docId = '';
+                        document.getElementById('delete-baja-empleado').disabled = true;
+                    } catch (e) {
+                        console.error("Error al eliminar empleado de Firestore:", e);
+                        showMessage(`Error al eliminar empleado: ${e.message}`, 'error');
                     }
                 } else {
-                    showMessage('Primero busque un registro para eliminar.', 'error');
+                    showMessage('Eliminación cancelada.', 'info');
+                }
+            });
+
+            // Baja Vendedor
+            document.getElementById('back-to-baja-menu-from-vendedor').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('search-baja-vendedor').addEventListener('click', async () => {
+                const idVendedor = document.getElementById('baja-vendedor-id').value;
+                const nombreVendedor = document.getElementById('baja-vendedor-nombre').value;
+                const correoVendedor = document.getElementById('baja-vendedor-correo').value; // Correo not in Vendedor schema
+                const deleteButton = document.getElementById('delete-baja-vendedor');
+                deleteButton.disabled = true;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!idVendedor && !nombreVendedor && !correoVendedor) { showMessage('Por favor, ingrese al menos un campo para buscar al vendedor.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/vendedores`;
+                    let q;
+                    let foundDocId = '';
+                    if (idVendedor) {
+                        q = query(collection(db, collectionPath), where("idVendedor", "==", parseInt(idVendedor)));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (nombreVendedor) {
+                        q = query(collection(db, collectionPath), where("nombreVendedor", "==", nombreVendedor));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    }
+                    // Note: Correo not in BGG_VENDEDOR, so it won't be used for search here.
+
+                    if (foundDocId) {
+                        deleteButton.dataset.docId = foundDocId;
+                        deleteButton.disabled = false;
+                        showMessage('Vendedor encontrado. Puede proceder a eliminarlo.', 'success');
+                    } else {
+                        showMessage('Vendedor no encontrado.', 'error');
+                        deleteButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar vendedor para eliminar en Firestore:", e);
+                    showMessage(`Error al buscar vendedor: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('delete-baja-vendedor').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-vendedor').dataset.docId;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docIdToDelete) { showMessage('Primero busque un vendedor para eliminar.', 'error'); return; }
+
+                const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro de vendedor?`);
+                if (confirmed) {
+                    try {
+                        const docRef = doc(db, `artifacts/${appId}/public/data/vendedores`, docIdToDelete);
+                        await deleteDoc(docRef);
+                        await showMessage('Vendedor eliminado exitosamente de Firestore!', 'success');
+                        document.getElementById('baja-vendedor-id').value = '';
+                        document.getElementById('baja-vendedor-nombre').value = '';
+                        document.getElementById('baja-vendedor-correo').value = '';
+                        document.getElementById('delete-baja-vendedor').dataset.docId = '';
+                        document.getElementById('delete-baja-vendedor').disabled = true;
+                    } catch (e) {
+                        console.error("Error al eliminar vendedor de Firestore:", e);
+                        showMessage(`Error al eliminar vendedor: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Eliminación cancelada.', 'info');
+                }
+            });
+
+            // Baja Cliente (Original logic was for 'empleados', now adjusted for 'clientes' and its fields)
+            document.getElementById('back-to-baja-menu-from-cliente').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('search-baja-cliente').addEventListener('click', async () => {
+                const idCliente = document.getElementById('baja-cliente-id').value;
+                const nombreCliente = document.getElementById('baja-cliente-nombre-baja').value;
+                const correoCliente = document.getElementById('baja-cliente-correo-baja').value;
+                const deleteButton = document.getElementById('delete-baja-cliente');
+                deleteButton.disabled = true;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!idCliente && !nombreCliente && !correoCliente) { showMessage('Por favor, ingrese al menos un campo para buscar al cliente.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/clientes`;
+                    let q;
+                    let foundDocId = '';
+                    if (idCliente) {
+                        q = query(collection(db, collectionPath), where("idCliente", "==", parseInt(idCliente)));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (nombreCliente) {
+                        q = query(collection(db, collectionPath), where("nombreCliente", "==", nombreCliente));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (correoCliente) {
+                        q = query(collection(db, collectionPath), where("correo", "==", correoCliente));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    }
+
+                    if (foundDocId) {
+                        deleteButton.dataset.docId = foundDocId;
+                        deleteButton.disabled = false;
+                        showMessage('Cliente encontrado. Puede proceder a eliminarlo.', 'success');
+                    } else {
+                        showMessage('Cliente no encontrado.', 'error');
+                        deleteButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar cliente para eliminar en Firestore:", e);
+                    showMessage(`Error al buscar cliente: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('delete-baja-cliente').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-cliente').dataset.docId;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docIdToDelete) { showMessage('Primero busque un cliente para eliminar.', 'error'); return; }
+
+                const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro de cliente?`);
+                if (confirmed) {
+                    try {
+                        const docRef = doc(db, `artifacts/${appId}/public/data/clientes`, docIdToDelete);
+                        await deleteDoc(docRef);
+                        await showMessage('Cliente eliminado exitosamente de Firestore!', 'success');
+                        document.getElementById('baja-cliente-id').value = '';
+                        document.getElementById('baja-cliente-nombre-baja').value = '';
+                        document.getElementById('baja-cliente-correo-baja').value = '';
+                        document.getElementById('delete-baja-cliente').dataset.docId = '';
+                        document.getElementById('delete-baja-cliente').disabled = true;
+                    } catch (e) {
+                        console.error("Error al eliminar cliente de Firestore:", e);
+                        showMessage(`Error al eliminar cliente: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Eliminación cancelada.', 'info');
+                }
+            });
+
+            // Baja Libro
+            document.getElementById('back-to-baja-menu-from-libro').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('search-baja-libro').addEventListener('click', async () => {
+                const titulo = document.getElementById('baja-libro-titulo').value;
+                const autor = document.getElementById('baja-libro-autor').value;
+                const editorial = document.getElementById('baja-libro-editorial').value;
+                const deleteButton = document.getElementById('delete-baja-libro');
+                deleteButton.disabled = true;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!titulo && !autor && !editorial) { showMessage('Por favor, ingrese al menos un campo para buscar el libro.', 'error'); return; }
+
+                try {
+                    const collectionPath = `artifacts/${appId}/public/data/libros`;
+                    let q;
+                    let foundDocId = '';
+                    if (titulo) {
+                        q = query(collection(db, collectionPath), where("titulo", "==", titulo));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (autor) {
+                        q = query(collection(db, collectionPath), where("autor", "==", autor));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    } else if (editorial) {
+                        q = query(collection(db, collectionPath), where("editorial", "==", editorial));
+                        const querySnapshot = await getDocs(q);
+                        if (!querySnapshot.empty) foundDocId = querySnapshot.docs[0].id;
+                    }
+
+                    if (foundDocId) {
+                        deleteButton.dataset.docId = foundDocId;
+                        deleteButton.disabled = false;
+                        showMessage('Libro encontrado. Puede proceder a eliminarlo.', 'success');
+                    } else {
+                        showMessage('Libro no encontrado.', 'error');
+                        deleteButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar libro para eliminar en Firestore:", e);
+                    showMessage(`Error al buscar libro: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('delete-baja-libro').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-libro').dataset.docId;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docIdToDelete) { showMessage('Primero busque un libro para eliminar.', 'error'); return; }
+
+                const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro de libro?`);
+                if (confirmed) {
+                    try {
+                        const docRef = doc(db, `artifacts/${appId}/public/data/libros`, docIdToDelete);
+                        await deleteDoc(docRef);
+                        await showMessage('Libro eliminado exitosamente de Firestore!', 'success');
+                        document.getElementById('baja-libro-titulo').value = '';
+                        document.getElementById('baja-libro-autor').value = '';
+                        document.getElementById('baja-libro-editorial').value = '';
+                        document.getElementById('delete-baja-libro').dataset.docId = '';
+                        document.getElementById('delete-baja-libro').disabled = true;
+                    } catch (e) {
+                        console.error("Error al eliminar libro de Firestore:", e);
+                        showMessage(`Error al eliminar libro: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Eliminación cancelada.', 'info');
+                }
+            });
+
+            // Baja Visita
+            document.getElementById('back-to-baja-menu-from-visita').addEventListener('click', () => showPage('baja-menu'));
+            document.getElementById('search-baja-visita').addEventListener('click', async () => {
+                const idVisita = document.getElementById('baja-visita-id').value;
+                const deleteButton = document.getElementById('delete-baja-visita');
+                deleteButton.disabled = true;
+
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!idVisita) { showMessage('Por favor, ingrese el ID de la visita a buscar.', 'error'); return; }
+
+                try {
+                    const docRef = doc(db, `artifacts/${appId}/public/data/visitas`, idVisita.toString());
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        deleteButton.dataset.docId = docSnap.id;
+                        deleteButton.disabled = false;
+                        showMessage(`Visita ${idVisita} encontrada. Puede proceder a eliminarla.`, 'success');
+                    } else {
+                        showMessage('Visita no encontrada.', 'error');
+                        deleteButton.dataset.docId = '';
+                    }
+                } catch (e) {
+                    console.error("Error al buscar visita para eliminar en Firestore:", e);
+                    showMessage(`Error al buscar visita: ${e.message}`, 'error');
+                }
+            });
+            document.getElementById('delete-baja-visita').addEventListener('click', async () => {
+                const docIdToDelete = document.getElementById('delete-baja-visita').dataset.docId;
+                if (!db || !userId) { showMessage('Base de datos no inicializada o usuario no autenticado.', 'error'); return; }
+                if (!docIdToDelete) { showMessage('Primero busque una visita para eliminar.', 'error'); return; }
+
+                const confirmed = await showConfirmation(`¿Estás seguro de eliminar este registro de visita?`);
+                if (confirmed) {
+                    try {
+                        const docRef = doc(db, `artifacts/${appId}/public/data/visitas`, docIdToDelete);
+                        await deleteDoc(docRef);
+                        await showMessage('Visita eliminada exitosamente de Firestore!', 'success');
+                        document.getElementById('baja-visita-id').value = '';
+                        document.getElementById('delete-baja-visita').dataset.docId = '';
+                        document.getElementById('delete-baja-visita').disabled = true;
+                    } catch (e) {
+                        console.error("Error al eliminar visita de Firestore:", e);
+                        showMessage(`Error al eliminar visita: ${e.message}`, 'error');
+                    }
+                } else {
+                    showMessage('Eliminación cancelada.', 'info');
                 }
             });
         });
