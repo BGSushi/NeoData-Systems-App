@@ -873,8 +873,6 @@
             </div>
         </div>
 
-        <!-- Removed Consulta Venta Libro Page -->
-
         <!-- Baja Menu (New) -->
         <div id="baja-menu" class="page">
             <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">Menú Baja</h1>
@@ -990,53 +988,46 @@
 
     <script type="module">
         // --- Local Data Storage (in-memory with localStorage persistence) ---
-        // Removed localEmpresas array as per user request.
         let localEmpleados = [];
         let localVendedores = [];
         let localClientes = [];
         let localLibros = [];
         let localVisitas = [];
         let localVentas = [];
-        let localVentaLibros = []; // This will be removed
+        // localVentaLibros array and its data are completely removed as per user request.
 
         /**
          * Saves all local data arrays to localStorage.
          */
         function saveAllData() {
-            // Removed localEmpresas from localStorage operations
             localStorage.setItem('localEmpleados', JSON.stringify(localEmpleados));
             localStorage.setItem('localVendedores', JSON.stringify(localVendedores));
             localStorage.setItem('localClientes', JSON.stringify(localClientes));
             localStorage.setItem('localLibros', JSON.stringify(localLibros));
             localStorage.setItem('localVisitas', JSON.stringify(localVisitas));
             localStorage.setItem('localVentas', JSON.stringify(localVentas));
-            // localStorage.setItem('localVentaLibros', JSON.stringify(localVentaLibros)); // Removed
         }
 
         /**
          * Loads all local data arrays from localStorage or initializes with dummy data.
          */
         function loadInitialData() {
-            // Removed storedEmpresas from localStorage operations
             const storedEmpleados = localStorage.getItem('localEmpleados');
             const storedVendedores = localStorage.getItem('localVendedores');
             const storedClientes = localStorage.getItem('localClientes');
             const storedLibros = localStorage.getItem('localLibros');
             const storedVisitas = localStorage.getItem('localVisitas');
             const storedVentas = localStorage.getItem('localVentas');
-            // const storedVentaLibros = localStorage.getItem('localVentaLibros'); // Removed
 
-            if (storedEmpleados && storedVendedores && storedClientes && storedLibros && storedVisitas && storedVentas /*&& storedVentaLibros*/) {
+            if (storedEmpleados && storedVendedores && storedClientes && storedLibros && storedVisitas && storedVentas) {
                 localEmpleados = JSON.parse(storedEmpleados);
                 localVendedores = JSON.parse(storedVendedores);
                 localClientes = JSON.parse(storedClientes);
                 localLibros = JSON.parse(storedLibros);
                 localVisitas = JSON.parse(storedVisitas);
                 localVentas = JSON.parse(storedVentas);
-                // localVentaLibros = JSON.parse(storedVentaLibros); // Removed
             } else {
                 // Dummy data if nothing in localStorage
-                // Removed localEmpresas dummy data
                 localEmpleados = [
                     { id: '1', NO_EMPLEADO_PK: 1, NOM_EMPLEADO: 'Juan Perez', LEGAJO: 'EMP001', DIR_EMPLEADO: 'Calle Falsa 123', TEL_EMPLEADO: '555-1234', EMPRESA_EMPLEADO: 'Tech Solutions', CORREO_EMPLEADO: 'juan.p@tech.com', EDAD: 30 },
                     { id: '2', NO_EMPLEADO_PK: 2, NOM_EMPLEADO: 'Maria Garcia', LEGAJO: 'EMP002', DIR_EMPLEADO: 'Av. Siempre Viva 45', TEL_EMPLEADO: '555-5678', EMPRESA_EMPLEADO: 'Global Innovations', CORREO_EMPLEADO: 'maria.g@global.com', EDAD: 25 }
@@ -1061,10 +1052,6 @@
                     { id: '1', ID_VENTA_PK: 1, FECHA_VENTA: '2025-06-01', HORA_VENTA: '09:15', LIBROS_VENTA: 3, ID_VISITA_FK: 1 },
                     { id: '2', ID_VENTA_PK: 2, FECHA_VENTA: '2025-06-01', HORA_VENTA: '10:45', LIBROS_VENTA: 5, ID_VISITA_FK: 2 }
                 ];
-                localVentaLibros = [ // This array is still here for potential future use or if it's a FK table to Sales
-                    { id: '1', ID_VENTA_FK: 1, ID_LIBRO_FK: 1, CANTIDAD: 1, METODO_DE_PAGO: 'Tarjeta' },
-                    { id: '2', ID_VENTA_FK: 2, ID_LIBRO_FK: 2, CANTIDAD: 2, METODO_DE_PAGO: 'Efectivo' }
-                ];
                 saveAllData(); // Save dummy data to localStorage
             }
         }
@@ -1083,7 +1070,7 @@
         }
 
         /**
-         * Clears all input fields and disables buttons within a given page element.
+         * Clears all input fields and manages button states within a given page element.
          * @param {string} pageId The ID of the page whose inputs should be cleared.
          */
         function clearInputs(pageId) {
@@ -1093,18 +1080,15 @@
                     input.value = '';
                     input.disabled = false; // Re-enable inputs after clearing for new entry
                 });
-                // Disable all buttons with 'button-primary' or 'button-secondary' or 'button-danger' within the page, except for specific ones like search or back buttons
+                // Disable all buttons with 'button-primary' or 'button-secondary' or 'button-danger' within the page,
+                // except for specific ones like search, back, login, exit, logout, register, and DELETE buttons.
                 page.querySelectorAll('.button-primary, .button-secondary, .button-danger').forEach(button => {
-                    // Only disable if it's an update/delete button, not navigation or search
-                    if (!button.id.includes('back-to-') && !button.id.includes('search-') && !button.id.includes('login-') && !button.id.includes('exit-') && !button.id.includes('main-menu-logout') && !button.id.includes('register-')) {
+                    if (!button.id.includes('back-to-') && !button.id.includes('search-') && !button.id.includes('login-') && !button.id.includes('exit-') && !button.id.includes('main-menu-logout') && !button.id.includes('register-') && !button.id.includes('delete-')) {
                         button.disabled = true;
-                    } else if (button.id.includes('register-')) { // Re-enable register buttons
+                    } else {
+                        // Re-enable buttons that are in the exclusion list (register, search, delete, back, etc.)
                         button.disabled = false;
                     }
-                });
-                // Specifically re-enable search buttons
-                page.querySelectorAll('[id^="search-"]').forEach(button => {
-                    button.disabled = false;
                 });
             }
         }
@@ -1172,7 +1156,7 @@
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
             headers.forEach(headerText => {
-                const th = document.createElement('th');
+                const th = document('th');
                 th.textContent = headerText.replace(/_/g, ' ').toUpperCase(); // Format header text
                 headerRow.appendChild(th);
             });
@@ -1204,14 +1188,12 @@
          */
         function getLocalCollection(collectionName) {
             switch (collectionName) {
-                // case 'empresas': return localEmpresas; // Removed as per user request
                 case 'empleados': return localEmpleados;
                 case 'vendedores': return localVendedores;
                 case 'clientes': return localClientes;
                 case 'libros': return localLibros;
                 case 'visitas': return localVisitas;
                 case 'ventas': return localVentas;
-                case 'ventaLibros': return localVentaLibros; // Still exists in data, but not directly managed by UI
                 default: return [];
             }
         }
@@ -1238,7 +1220,7 @@
                     case 'libros': pkField = 'ID_LIBRO_PK'; break;
                     case 'visitas': pkField = 'ID_VISITA_PK'; break;
                     case 'ventas': pkField = 'ID_VENTA_PK'; break;
-                    default: pkField = 'id'; // Fallback for 'ventaLibros' where 'id' is auto-generated
+                    default: pkField = 'id'; // Fallback for cases like auto-generated IDs
                 }
 
                 existingIndex = collection.findIndex(item => String(item[pkField]) === String(docId));
@@ -1249,7 +1231,6 @@
                 return false;
             }
 
-            // Generate a unique ID for the item if not provided (for 'ventaLibros' where no explicit PK is used as docId)
             const newId = docId || String(Date.now()); // Simple unique ID generation
             collection.push({ id: newId, ...data });
             saveAllData();
@@ -1335,22 +1316,22 @@
                 default: pkField = 'id';
             }
 
-            const initialLength = collection.length;
-            collection = collection.filter(item => String(item[pkField]) !== String(docId));
+            const indexToDelete = collection.findIndex(item => String(item[pkField]) === String(docId));
 
-            // Update the global array reference
-            switch (collectionName) {
-                // case 'empresas': localEmpresas = collection; break; // Removed
-                case 'empleados': localEmpleados = collection; break;
-                case 'vendedores': localVendedores = collection; break;
-                case 'clientes': localClientes = collection; break;
-                case 'libros': localLibros = collection; break;
-                case 'visitas': localVisitas = collection; break;
-                case 'ventas': localVentas = collection; break;
-                // case 'ventaLibros': localVentaLibros = collection; break; // Removed
-            }
+            if (indexToDelete !== -1) {
+                // Remove the item from the array
+                collection.splice(indexToDelete, 1);
 
-            if (collection.length < initialLength) {
+                // Update the global array reference (important since 'collection' was a local copy)
+                switch (collectionName) {
+                    case 'empleados': localEmpleados = collection; break;
+                    case 'vendedores': localVendedores = collection; break;
+                    case 'clientes': localClientes = collection; break;
+                    case 'libros': localLibros = collection; break;
+                    case 'visitas': localVisitas = collection; break;
+                    case 'ventas': localVentas = collection; break;
+                }
+
                 saveAllData();
                 console.log(`Documento con ID ${docId} eliminado de ${collectionName}.`);
                 return true;
@@ -2053,7 +2034,7 @@
                 if (!currentVisitaDocId) { showMessage("Primero busque una visita."); return; }
                 const newValue = document.getElementById('modificar-visita-hora').value.trim();
                 if (!newValue) { showMessage("La hora no puede estar vacía."); return; }
-                const confirmed = await showConfirm("¿Está seguro de que desea actualizar el Hora de la Visita?");
+                const confirmed = await showConfirm("¿Está seguro de que desea actualizar la Hora de la Visita?");
                 if (confirmed) {
                     const success = await updateDocument('visitas', currentVisitaDocId, { HORA_VISITA: newValue });
                     if (success) { showMessage("Hora de Visita actualizada."); }
@@ -2099,7 +2080,6 @@
             document.getElementById('btn-consulta-libro').addEventListener('click', () => { clearInputs('consulta-libro-page'); document.getElementById('consulta-libro-results').innerHTML = ''; showPage('consulta-libro-page'); });
             document.getElementById('btn-consulta-visita').addEventListener('click', () => { clearInputs('consulta-visita-page'); document.getElementById('consulta-visita-results').innerHTML = ''; showPage('consulta-visita-page'); });
             document.getElementById('btn-consulta-venta').addEventListener('click', () => { clearInputs('consulta-venta-page'); document.getElementById('consulta-venta-results').innerHTML = ''; showPage('consulta-venta-page'); });
-            // Removed btn-consulta-venta-libro
             document.getElementById('back-to-main-menu-from-consulta').addEventListener('click', () => showPage('main-menu'));
 
             // Consulta Empleado
@@ -2191,21 +2171,6 @@
                 renderTable(resultsContainer, ventas, headers);
             });
             document.getElementById('back-to-consulta-menu-from-venta').addEventListener('click', () => showPage('consulta-menu'));
-
-            // Removed Consulta Venta Libro
-            // document.getElementById('search-consulta-venta-libro').addEventListener('click', async () => {
-            //     const idVentaLibroSearch = document.getElementById('consulta-venta-libro-venta-id-search').value.trim();
-            //     const resultsContainer = document.getElementById('consulta-venta-libro-results');
-            //     let ventaLibros;
-            //     if (idVentaLibroSearch) {
-            //         ventaLibros = (await getDocuments('ventaLibros', 'ID_VENTA_FK', parseInt(idVentaLibroSearch))).filter(Boolean);
-            //     } else {
-            //         ventaLibros = await getDocuments('ventaLibros');
-            //     }
-            //     const headers = ['id', 'ID_VENTA_FK', 'ID_LIBRO_FK', 'CANTIDAD', 'METODO_DE_PAGO'];
-            //     renderTable(resultsContainer, ventaLibros, headers);
-            // });
-            // document.getElementById('back-to-consulta-menu-from-venta-libro').addEventListener('click', () => showPage('consulta-menu'));
 
 
             // Baja Menu
@@ -2324,4 +2289,3 @@
     </script>
 </body>
 </html>
-
