@@ -1064,8 +1064,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, doc, getDoc, updateDoc, deleteDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { doc, setDoc } from "firebase/firestore";
-         import { db } from './firebase-config';
+   
         // Global variables for Firebase (will be provided by the environment).
         // If you are running this code locally (outside of the Canvas environment),
         // you MUST replace the placeholder firebaseConfig with your actual Firebase project configuration.
@@ -1232,6 +1231,9 @@
             document.getElementById('exit-button').addEventListener('click', () => {
                 showMessage('Saliendo de la aplicación.', 'info');
             });
+
+                 import { doc, setDoc } from "firebase/firestore";
+         import { db } from './firebase-config';
 
             // Main Menu Buttons
             document.getElementById('btn-alta').addEventListener('click', () => showPage('altas-menu'));
